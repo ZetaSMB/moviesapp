@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MovieCollectionViewCell" customModule="movies" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="220" height="257"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="220" height="257"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UzJ-Cx-FH3">
+                        <rect key="frame" x="0.0" y="0.0" width="220" height="257"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="UzJ-Cx-FH3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3Fg-1q-RVy"/>
+                <constraint firstAttribute="bottom" secondItem="UzJ-Cx-FH3" secondAttribute="bottom" id="ZuU-pX-MlY"/>
+                <constraint firstItem="UzJ-Cx-FH3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="iIO-H9-nXQ"/>
+                <constraint firstAttribute="trailing" secondItem="UzJ-Cx-FH3" secondAttribute="trailing" id="mKL-MD-ULV"/>
+            </constraints>
+            <size key="customSize" width="220" height="257"/>
+            <connections>
+                <outlet property="filmPosterImageView" destination="UzJ-Cx-FH3" id="zvP-yP-hxJ"/>
+            </connections>
+            <point key="canvasLocation" x="-348" y="-67"/>
+        </collectionViewCell>
+    </objects>
+</document>
