@@ -53,6 +53,15 @@ class TMDbRepository: TMDbService {
         }
     }
     
+    func configureCache() {
+        let aURLCache = URLCache(
+            memoryCapacity: 20 * 1024 * 1024, // 20 MB
+            diskCapacity: 100 * 1024 * 1024,  // 100 MB
+            diskPath: "org.zeta.movies"
+        )
+        URLCache.shared = aURLCache
+    }
+    
     func fetchMovieCollection(by collectionType: TMDbMovieCollection, successHandler: @escaping (MoviesResponse) -> Void, errorHandler: @escaping (Error) -> Void) {
         fetchCodableEntity(from: TMDbRequest.collection(collectionType), successHandler: successHandler, errorHandler: errorHandler)
     }

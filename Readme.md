@@ -39,14 +39,16 @@ Los beneficios del patrón a desctacar son:
 * TMDbService: se define el procolo de consultas a la API.  Observarción: algunos viewmodels en su inicializador reciben una instancia de un objeto que implementa el protocolo TMDbService que define las consultas sobre la DB (de esta forma se injecta la dependencia via inicializador).
 * TMDbRepository: es el repositorio de películas, provee una implementación del TMDbService
 
+#### Capa de persistencia y funcionamiento offline:
+El comportamiento offline se provee a través de la clase URLCache nativa de iOS. La misma se inicializa con 20 mb de capacidad de memoria en RAM y con 100 mb en disco, en la clase del repositorio TMDbRepository. Todos los request realizados a la API TMDb son cacheados por defecto, y almacenados con los parametros de vigencia provistos por la misma API. De esta forma, cuando el dispositivo NO cuente con conexión a internet, los requests fallidos pueden ser recuperados de la cache.
+
 #### Modelos:
 * TMDbMovie: contiene todos los modelos que sirven ademas como DTO (data-transfer objects) para almacenar los datos de la API.
 
 
 ## TODOs:
-1. Capa de persistencia y funcionamiento offline.
-2. Agregar mas info en el MovieDetailViewController y visualización de videos.
-3. Agregar Unit tests.
+1. Agregar mas info en MovieDetailViewController y visualización de videos.
+2. Agregar Unit tests.
 
 # Preguntas:
 
