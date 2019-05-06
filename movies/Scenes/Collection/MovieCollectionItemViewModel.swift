@@ -8,7 +8,7 @@
 
 import RxSwift
 
-struct MovieCollectionItemViewModel {
+public struct MovieCollectionItemViewModel {
     
     private let disposeBag = DisposeBag()
     private let movie: Movie

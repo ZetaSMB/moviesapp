@@ -9,53 +9,77 @@
 import RxSwift
 import RxCocoa
 
-class MovieDetailViewModel: NSObject {
+public struct MovieDetailViewModelInputs {
+    let movie: Movie
+    let movieRepository: TMDbService
+}
 
-    private let movieRepository: TMDbService
+public protocol MovieDetailViewModelOutputs {
+    var movieInfo: Driver<String>  { get }
+    var movieCast: Driver<[MovieCast]>  { get }
+    var topImageURL: URL?  { get }
+    var title : String?  { get }
+    var overview : String?  { get }
+    var numberOfCastPersons : Int  { get }
+    var numberOfCrewPersons : Int { get }
+    func castMemberViewModelForIndex(_ index: Int) -> CastMemberItemViewModel?
+}
+
+public protocol MovieDetailViewModelType {
+    init(_ inputs: MovieDetailViewModelInputs)
+    var outputs: MovieDetailViewModelOutputs { get }
+    func fetchMovieDetail()
+}
+
+public final class MovieDetailViewModel:
+    MovieDetailViewModelType, MovieDetailViewModelOutputs
+{
+    private let inputs: MovieDetailViewModelInputs
     private let disposeBag = DisposeBag()
+    private let _movieCast = BehaviorRelay<[MovieCast]>(value: [])
+    private let _movieInfo = BehaviorRelay<String>(value: "")
     
     private static let dateFormatter: DateFormatter = {
         $0.dateFormat = "yyyy"
         return $0
     }(DateFormatter())
     
-    private let movie: Movie
-    private let _movieCast = BehaviorRelay<[MovieCast]>(value: [])
-    private let _movieInfo = BehaviorRelay<String>(value: "")
+    public init(_ inputs : MovieDetailViewModelInputs) {
+        self.inputs = inputs
+    }
+
+    public var outputs: MovieDetailViewModelOutputs {
+        return self
+    }
     
-    var movieInfo: Driver<String> {
+    public var movieInfo: Driver<String> {
         return _movieInfo.asDriver()
     }
     
-    var movieCast: Driver<[MovieCast]> {
+    public var movieCast: Driver<[MovieCast]> {
         return _movieCast.asDriver()
     }
     
-    init(withMovie movie: Movie, movieRepository: TMDbService) {
-        self.movie = movie
-        self.movieRepository = movieRepository
-    }
-    
-    var topImageURL: URL? {
-        if let path = movie.posterPath {
+    public var topImageURL: URL? {
+        if let path = inputs.movie.posterPath {
             return URL(string: "https://image.tmdb.org/t/p/w500\(path)")
         }
         return nil
     }
     
-    var title : String? {
-        return movie.title
+    public var title : String? {
+        return inputs.movie.title
     }
     
-    var overview : String? {
-        return movie.overview
+    public var overview : String? {
+        return inputs.movie.overview
     }
 
-    var numberOfCastPersons : Int {
+    public var numberOfCastPersons : Int {
         return _movieCast.value.count
     }
     
-    var numberOfCrewPersons : Int {
+    public var numberOfCrewPersons : Int {
         return _movieCast.value.count
     }
     
@@ -67,7 +91,7 @@ class MovieDetailViewModel: NSObject {
     }
     
     public func fetchMovieDetail() {
-        movieRepository.fetchMovie(id: movie.id, successHandler: { [weak self](detail) in
+        inputs.movieRepository.fetchMovie(id: inputs.movie.id, successHandler: { [weak self](detail) in
             self?._movieInfo.accept(self?.movieInfoString(movieDetail: detail) ?? "")
             self?._movieCast.accept(detail.credits?.cast ?? [] )
         }, errorHandler: { [weak self] (error) in

@@ -10,10 +10,34 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class MovieSearchViewModel {
-    
-    private let movieRepository: TMDbService
+public struct MovieSearchViewModelInputs {
+    let movieRepository: TMDbService
+    let query: Driver<String>
+}
+
+public protocol MovieSearchViewModelOutputs {
+    var movies: Driver<[Movie]>  { get }
+    var isFetching: Driver<Bool>  { get }
+    var info: Driver<String?>  { get }
+    var hasInfo: Bool  { get }
+    var numberOfMovies: Int { get }
+    func viewModelItemForMovie(at index: Int) -> MovieCollectionItemViewModel?
+    func viewModelDetailForMovie(at index: Int) -> MovieDetailViewModel?
+}
+
+public protocol MovieSearchViewModelType {
+    init(_ inputs: MovieSearchViewModelInputs)
+    var outputs: MovieSearchViewModelOutputs { get }
+}
+
+public final class MovieSearchViewModel:
+    MovieSearchViewModelType, MovieSearchViewModelOutputs
+{
+    private let inputs: MovieSearchViewModelInputs
     private let disposeBag = DisposeBag()
+    private let _movies = BehaviorRelay<[Movie]>(value: [])
+    private let _isFetching = BehaviorRelay<Bool>(value: false)
+    private let _info = BehaviorRelay<String?>(value: nil)
     
     fileprivate enum UIMessages {
         static let searchMessage: String = "Search your favorite movies in THE MOVIE DB"
@@ -21,9 +45,14 @@ class MovieSearchViewModel {
         static let error: String = "Oops, there was an error fetching data :(\nPlease, check your connection and try again."
     }
     
-    init(query: Driver<String>, repository: TMDbService) {
-        self.movieRepository = repository
-        query
+    public var outputs: MovieSearchViewModelOutputs {
+        return self
+    }
+    
+    public init(_ inputs: MovieSearchViewModelInputs) {
+        self.inputs = inputs
+        inputs
+            .query
             .throttle(1.0)
             .distinctUntilChanged()
             .drive(onNext: { [weak self] (queryString) in
@@ -35,55 +64,53 @@ class MovieSearchViewModel {
             }).disposed(by: disposeBag)
     }
     
-    private let _movies = BehaviorRelay<[Movie]>(value: [])
-    private let _isFetching = BehaviorRelay<Bool>(value: false)
-    private let _info = BehaviorRelay<String?>(value: nil)
     
-    var isFetching: Driver<Bool> {
+    public var isFetching: Driver<Bool> {
         return _isFetching.asDriver()
     }
     
-    var movies: Driver<[Movie]> {
+    public var movies: Driver<[Movie]> {
         return _movies.asDriver()
     }
     
-    var info: Driver<String?> {
+    public var info: Driver<String?> {
         return _info.asDriver()
     }
     
-    var hasInfo: Bool {
+    public var hasInfo: Bool {
         return _info.value != nil
     }
     
-    var numberOfMovies: Int {
+    public var numberOfMovies: Int {
         return _movies.value.count
     }
     
-    func viewModelItemForMovie(at index: Int) -> MovieCollectionItemViewModel? {
+    public func viewModelItemForMovie(at index: Int) -> MovieCollectionItemViewModel? {
         guard index < _movies.value.count else {
             return nil
         }
         return MovieCollectionItemViewModel(withMovie: _movies.value[index])
     }
     
-    func viewModelDetailForMovie(at index: Int) -> MovieDetailViewModel? {
+    public func viewModelDetailForMovie(at index: Int) -> MovieDetailViewModel? {
         guard index < _movies.value.count else {
             return nil
         }
-        return MovieDetailViewModel(withMovie: _movies.value[index], movieRepository: movieRepository)
+        let vmInput = MovieDetailViewModelInputs(movie: _movies.value[index] , movieRepository: inputs.movieRepository)
+        return MovieDetailViewModel(vmInput)
     }
     
     private func searchMovie(query: String?) {
         guard let query = query, !query.isEmpty else {
-            self._info.accept(UIMessages.searchMessage)
+            _info.accept(UIMessages.searchMessage)
             return
         }
         
-        self._isFetching.accept(true)
-        self._movies.accept([])
-        self._info.accept(nil)
+        _isFetching.accept(true)
+        _movies.accept([])
+        _info.accept(nil)
         
-        movieRepository.searchMovie(query: query, successHandler: {[weak self] (response) in            
+        inputs.movieRepository.searchMovie(query: query, successHandler: {[weak self] (response) in
             self?._isFetching.accept(false)
             if response.totalResults == 0 {
                 self?._info.accept(UIMessages.notFound + "'\(query)'")

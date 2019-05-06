@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CastMemberItemViewModel: NSObject {
+public struct CastMemberItemViewModel {
     
     private let member: MovieCast
     
