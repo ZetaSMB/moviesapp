@@ -1,65 +1,51 @@
-# Aplicación de información de películas
+# iOS Movies App
 
-Aplicación de información de películas que utiliza la API de la base de datos de películas (TMDb - https://www.themoviedb.org) para listar películas populares, mejores rankeadas, próximas y buscar películas por títulos.
+A sample app that uses TMDb API (https://www.themoviedb.org) to show popular, upcoming, top rated movies and 
+search for movies by titles.
 
-# Arquitectura de la aplicación y librerías utilizadas
-El código de la aplicación sigue el patrón arquitectónico MVVM y utiliza las librerías RxSwift y RxCocoa (https://github.com/ReactiveX/RxSwift) para establecer la comunicación y bindeos necesarios entre views y viewModels.
-Para la capa de networking, se utiliza la librería de Alamofire (https://github.com/Alamofire) que también provee algunas clases de utilidad que simplifican el manejo de caché de imagenes.
+#### Pre-requisites to run the project
+* Xcode 10.2.1 and later
+* Cocoapod 1.6.1 and later
+* Create an account on TMDb and generate an API_KEY, then replace the apiKey constant value on TMDbRequest.swift
 
-Las caraterísticas generales del patrón MVVM son las siguientes:
+# Architecture and libraries
+The code follows the MVVM architectural pattern and uses the RxSwift and RxCocoa libraries (https://github.com/ReactiveX/RxSwift) to configure the bindings between views and view models. On the network layer, uses Alamofire library (https://github.com/Alamofire).
 
-Toda la transformación de datos necesaria para representar los datos del modelo de una aplicación en las vistas (Views) será implementada por los ViewModels y expuestas al ViewController como propiedades. La responsabilidad del ViewController es configurar el binding de las propiedades del viewModel a las views y enviar toda la acción proveniente de una view de nuevo al ViewModel. De esta manera, el estado de la aplicación siempre estará sincronizado entre las Views y los ViewModels.
+The general characteristics of the MVVM pattern are the following:
 
-Las reglas que propone el patrón MVVM son:
-1. Todo Modelo es propiedad del ViewModel e ignora la existencia del ViewModel.
-2. Todo ViewModel es propiedad del ViewController e ignora la existencia del ViewController.
-3. El ViewController es propietario del ViewModel y no debe conocer nada respecto del modelo.
+All the transformation of the data necessary to represent the model's data into the app's views will be implemented by the ViewModels and exposed to the ViewController as properties. The responsibility of ViewController is to bind the properties of viewModel to the views and redirects all the user interactions to the ViewModel. In this way, the state of the application will always be synchronized between the Views and the ViewModels.
 
-Los beneficios del patrón a desctacar son:
-* Provee una buena encapsulación de la lógica de negocios y la transformación de datos del modelo.
-* Facilita la creación de test unitarios de buena cobertura.
-* Los ViewController resultan más livianos en comparación con el patrón MVC.
+The main rules proposed by the MVVM pattern are:
+1. Every Model is owned by a ViewModel and ignores the existence of the ViewModel.
+2. Every ViewModel is owned by a ViewController and ignores the existence of the ViewController.
+3. The ViewController owns the ViewModel and mustn't know anything about the model.
 
-## Listado de clases de aplicación agrupados por responsabilidades:
-#### ViewControllers: controladores de vistas.
-* MovieCollectionViewController: es el componente que muestra los listados de películas populares, mejores rankeadas, próximas. 
-* MovieSearchViewController: es el componente que muestra los resultados de la búsqueda por títulos de peliculas
-* MovieDetailViewController: es el componente que muestra el detalle de una película
+The key benefits of the pattern are:
+* Provides a good encapsulation of the business logic and the model's data-transformation.
+* Facilitates the creation of unitary tests.
+* The ViewControllers are lighter compared to the MVC pattern (so you can avoid the so called `Massive ViewController` problem).
 
-#### Views: se encuentran en el storyboard principal Main.storyboard y dentro de la carpeta Cells/
+## List of application classes grouped by responsibilities:
+#### ViewControllers:
+* MovieCollectionViewController: shows the listings of popular movies, top rated and upcoming.
+* MovieSearchViewController: shows the results of the search for movie titles.
+* MovieDetailViewController: shows the detail of a movie.
 
-#### ViewModels: encargados de realizar las consultas sobre el repositorio de peliculas y efectuar el formateo necesario para mostrar los modelos en las diferentes vistas.
+#### Views: found in the Main Main Storyboard and within the Cells / folder
+
+#### ViewModels: responsible for making queries using the film repositories and perform the necessary formatting to show the models in the different views.
 * MovieCollectionViewModel
 * MovieCollectionItemViewModel
 * MovieDetailViewModel
 * MovieSearchViewModel
 * CastMemberItemViewModel
 
-#### Capa de red: consultas a la API. 
-* TMDbService: se define el procolo de consultas a la API.  Observarción: algunos viewmodels en su inicializador reciben una instancia de un objeto que implementa el protocolo TMDbService que define las consultas sobre la DB (de esta forma se injecta la dependencia via inicializador).
-* TMDbRepository: es el repositorio de películas, provee una implementación del TMDbService
+#### Network layer: API queries.
+* TMDbService: defines the API query protocol. Important note: some ViewModels receives as initializer's input an instance of an object that implements the TMDbService protocol that defines the queries on the database (in this way the dependency is injected through the initializer).
+* TMDbRepository: is the movie repository, provides an implementation of the TMDb service.
 
-#### Capa de persistencia y funcionamiento offline:
-El comportamiento offline se provee a través de la clase URLCache nativa de iOS. La misma se inicializa con 20 mb de capacidad de memoria en RAM y con 100 mb en disco, en la clase del repositorio TMDbRepository. Todos los request realizados a la API TMDb son cacheados por defecto, y almacenados con los parametros de vigencia provistos por la misma API. De esta forma, cuando el dispositivo NO cuente con conexión a internet, los requests fallidos pueden ser recuperados de la cache.
+#### Persistence layer and offline behaviour:
+The offline behavior is provided through the iOS's URLCache class. It is initialized with 20 mb of memory capacity in RAM and with 100 mb on disk. All requests made to the TMDb API are cached by default, and stored with the date validity parameters provided by the same API. In this way, when the device does NOT have an internet connection, requests can be retrieved from the cache.
 
-#### Modelos:
-* TMDbMovie: contiene todos los modelos que sirven ademas como DTO (data-transfer objects) para almacenar los datos de la API.
-
-
-## TODOs:
-1. Agregar mas info en MovieDetailViewController y visualización de videos.
-2. Agregar Unit tests.
-
-# Preguntas:
-
-1. En qué consiste el principio de responsabilidad única? Cuál es su propósito?
-
-Establece que cada módulo o clase debe tener responsabilidad sobre una sola parte de la funcionalidad proporcionada por el software, y esta responsabilidad debe estar encapsulada en su totalidad por la clase. 
-El propósito de esta regla es que el código quede lo suficientemente modularizado para que cuando se necesite aplicar algún cambio se pueda realizar con la menor cantidad de componentes afectados posible. A su vez, una buena división de responsabilidades resulta en un código mas testeable y seguro.
-
-2. Qué características tiene, según su opinión, un “buen” código o código limpio:
-
-Debe seguir un estilo arquitectónico que contemple:
-1. Buena distribución de responsabilidades entre entidades con roles estrictos y siguiendo los principios SOLID.
-1. Testeabilidad: poseer fácil predisposición y covertura con Unit-Test lo cuál ayuda a prevenir errores en runtime y a introducir nuevos cambios de forma segura (este punto esta fuertemente ligado al primero).
-1. Bajo costo de mantenimiento: facilidad para introducir nuevos cambios.
+#### Models:
+* TMDbMovie: contains all the models that serve as DTOs (data transfer objects) to store the API data.

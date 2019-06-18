@@ -12,7 +12,7 @@ public enum TMDbRequest : URLRequestConvertible {
     
     enum Constants {
         static let baseURLPath = "https://api.themoviedb.org/3"
-        static let apiKey = "8fdaa2b630f347c3eddf9a336c9ad4cf"
+        static let apiKey = "REPLACE WITH A VALID KEY"
     }
     
     case collection(TMDbMovieCollection)
