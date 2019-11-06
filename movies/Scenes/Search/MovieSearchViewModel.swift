@@ -16,10 +16,10 @@ public struct MovieSearchViewModelInputs {
 }
 
 public protocol MovieSearchViewModelOutputs {
-    var movies: Driver<[Movie]>  { get }
-    var isFetching: Driver<Bool>  { get }
-    var info: Driver<String?>  { get }
-    var hasInfo: Bool  { get }
+    var movies: Driver<[Movie]> { get }
+    var isFetching: Driver<Bool> { get }
+    var info: Driver<String?> { get }
+    var hasInfo: Bool { get }
     var numberOfMovies: Int { get }
     func viewModelItemForMovie(at index: Int) -> MovieCollectionItemViewModel?
     func viewModelDetailForMovie(at index: Int) -> MovieDetailViewModel?
@@ -30,9 +30,7 @@ public protocol MovieSearchViewModelType {
     var outputs: MovieSearchViewModelOutputs { get }
 }
 
-public final class MovieSearchViewModel:
-    MovieSearchViewModelType, MovieSearchViewModelOutputs
-{
+public final class MovieSearchViewModel: MovieSearchViewModelType, MovieSearchViewModelOutputs {
     private let inputs: MovieSearchViewModelInputs
     private let disposeBag = DisposeBag()
     private let _movies = BehaviorRelay<[Movie]>(value: [])
@@ -63,7 +61,6 @@ public final class MovieSearchViewModel:
                 }
             }).disposed(by: disposeBag)
     }
-    
     
     public var isFetching: Driver<Bool> {
         return _isFetching.asDriver()
@@ -96,7 +93,7 @@ public final class MovieSearchViewModel:
         guard index < _movies.value.count else {
             return nil
         }
-        let vmInput = MovieDetailViewModelInputs(movie: _movies.value[index] , movieRepository: inputs.movieRepository)
+        let vmInput = MovieDetailViewModelInputs(movie: _movies.value[index], movieRepository: inputs.movieRepository)
         return MovieDetailViewModel(vmInput)
     }
     

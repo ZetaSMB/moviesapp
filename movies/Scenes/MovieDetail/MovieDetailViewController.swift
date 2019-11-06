@@ -29,15 +29,15 @@ class MovieDetailViewController: UIViewController {
     
     fileprivate var detailViewModel: MovieDetailViewModel!
     
-    let disposeBag: DisposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     
     fileprivate enum UIConstants {
         static let margin: CGFloat = 15.0
     }
     
     public static func createMovieDetailController(detailViewModel: MovieDetailViewModel) -> MovieDetailViewController? {
-        let storyboard = UIStoryboard.init(name:"Main", bundle:nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier:"MovieDetailViewController") as? MovieDetailViewController {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController {
             vc.detailViewModel = detailViewModel
             return vc
         }
@@ -51,7 +51,7 @@ class MovieDetailViewController: UIViewController {
         setupBindings()
     }
     
-    var didSetupOffset : Bool = false
+    var didSetupOffset: Bool = false
     
     override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -61,7 +61,7 @@ class MovieDetailViewController: UIViewController {
         DispatchQueue.main.async {
             if (!self.didSetupOffset) {
                 self.didSetupOffset = true
-                self.scrollView.setContentOffset(CGPoint(x:0,y:-height), animated: false)
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: -height), animated: false)
             }
         }
     }
@@ -70,7 +70,7 @@ class MovieDetailViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         backdropImageView.contentMode = .scaleAspectFill
         if let imgURL = self.detailViewModel.topImageURL {
-            backdropImageView.setImage(fromURL:imgURL)
+            backdropImageView.setImage(fromURL: imgURL)
         }
         filmOverviewLabel.text = self.detailViewModel.overview
         filmTitleLabel.text = self.detailViewModel.title
@@ -128,7 +128,6 @@ class MovieDetailViewController: UIViewController {
             }).disposed(by: disposeBag)
     }
 }
-
 
 extension MovieDetailViewController: UICollectionViewDataSource {
     

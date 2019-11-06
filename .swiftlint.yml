@@ -1,0 +1,88 @@
+# List of rules: https://github.com/realm/SwiftLint/blob/master/Rules.md
+
+
+#------- COMMENT to enable a rule, UNCOMMENT to disable: -------#
+#-------    these rules are usually enabled by default   -------#
+disabled_rules:
+
+#--- Stylistic rules ---#
+- control_statement 		
+- identifier_name 			
+- trailing_whitespace
+- switch_case_alignment
+- todo
+
+# Decided to disable this rule, because Swift autocomplete
+# sometimes suggests code like this but using parentheses
+- empty_parentheses_with_trailing_closure
+
+#--- Hygienic rules ---#
+- multiple_closures_with_trailing_closure
+
+#--- Convention rules ---#
+- redundant_string_enum_value
+- type_name
+- for_where 					# fairly easy to fix
+
+#--- Code smell rules ---#
+- function_parameter_count 		# requires refactor
+- cyclomatic_complexity
+
+#--- Bug avoiding rules ---#
+- valid_ibinspectable 				# needs review
+- notification_center_detachment 	# needs review
+
+#--- Disabled phase 1 ---#
+- syntactic_sugar
+- empty_count
+
+#------- UNCOMMENT to enable a rule, COMMENT to disable: -------#
+#-------   these rules are usually disabled by default   -------#
+
+opt_in_rules:
+
+#--- Step 1 ---#
+- redundant_type_annotation
+- vertical_parameter_alignment_on_call
+- empty_count
+- file_name
+- force_unwrapping
+  
+#--- Stylistic rules ---#	
+- switch_case_on_newline					
+- operator_usage_whitespace
+- closure_spacing
+- multiline_parameters
+
+#--- Bug avoiding rules ---#
+- fatal_error_message
+- override_in_extension
+
+#-- Custom --#
+- singleton_inside_body
+- method_with_closure
+    
+file_length:
+  warning: 2756
+  error: 2756
+  
+function_body_length:
+  warning: 400
+  error: 400
+  
+line_length:
+  warning: 400
+  error: 400
+  
+type_body_length:
+  warning: 1000
+  error: 1000
+
+nesting:
+  type_level: 3
+
+#------- Other configurations -------#
+excluded:
+  - Pods
+  
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)

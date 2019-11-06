@@ -15,13 +15,13 @@ public struct MovieDetailViewModelInputs {
 }
 
 public protocol MovieDetailViewModelOutputs {
-    var movieInfo: Driver<String>  { get }
-    var movieCast: Driver<[MovieCast]>  { get }
-    var topImageURL: URL?  { get }
-    var title : String?  { get }
-    var overview : String?  { get }
-    var numberOfCastPersons : Int  { get }
-    var numberOfCrewPersons : Int { get }
+    var movieInfo: Driver<String> { get }
+    var movieCast: Driver<[MovieCast]> { get }
+    var topImageURL: URL? { get }
+    var title: String? { get }
+    var overview: String? { get }
+    var numberOfCastPersons: Int { get }
+    var numberOfCrewPersons: Int { get }
     func castMemberViewModelForIndex(_ index: Int) -> CastMemberItemViewModel?
 }
 
@@ -31,9 +31,7 @@ public protocol MovieDetailViewModelType {
     func fetchMovieDetail()
 }
 
-public final class MovieDetailViewModel:
-    MovieDetailViewModelType, MovieDetailViewModelOutputs
-{
+public final class MovieDetailViewModel: MovieDetailViewModelType, MovieDetailViewModelOutputs {
     private let inputs: MovieDetailViewModelInputs
     private let disposeBag = DisposeBag()
     private let _movieCast = BehaviorRelay<[MovieCast]>(value: [])
@@ -44,7 +42,7 @@ public final class MovieDetailViewModel:
         return $0
     }(DateFormatter())
     
-    public init(_ inputs : MovieDetailViewModelInputs) {
+    public init(_ inputs: MovieDetailViewModelInputs) {
         self.inputs = inputs
     }
 
@@ -67,19 +65,19 @@ public final class MovieDetailViewModel:
         return nil
     }
     
-    public var title : String? {
+    public var title: String? {
         return inputs.movie.title
     }
     
-    public var overview : String? {
+    public var overview: String? {
         return inputs.movie.overview
     }
 
-    public var numberOfCastPersons : Int {
+    public var numberOfCastPersons: Int {
         return _movieCast.value.count
     }
     
-    public var numberOfCrewPersons : Int {
+    public var numberOfCrewPersons: Int {
         return _movieCast.value.count
     }
     
@@ -87,14 +85,14 @@ public final class MovieDetailViewModel:
         guard index < _movieCast.value.count else {
             return nil
         }
-        return CastMemberItemViewModel(withMember:_movieCast.value[index])
+        return CastMemberItemViewModel(withMember: _movieCast.value[index])
     }
     
     public func fetchMovieDetail() {
         inputs.movieRepository.fetchMovie(id: inputs.movie.id, successHandler: { [weak self](detail) in
             self?._movieInfo.accept(self?.movieInfoString(movieDetail: detail) ?? "")
             self?._movieCast.accept(detail.credits?.cast ?? [] )
-        }, errorHandler: { [weak self] (error) in
+        }, errorHandler: { [weak self] (_) in
             self?._movieInfo.accept("")
             self?._movieCast.accept([])
         })
@@ -106,11 +104,11 @@ public final class MovieDetailViewModel:
             details += MovieDetailViewModel.dateFormatter.string(from: releaseDate)
         }
         if let runtime = movieDetail?.runtime {
-            details +=  (details.isEmpty ? "" : " • ") + "\(runtime) min"
+            details += (details.isEmpty ? "" : " • ") + "\(runtime) min"
         }
 
         if let voteAvg = movieDetail?.voteAverage {
-            details +=  (details.isEmpty ? "" : " • ") + "\(voteAvg)/10 ★"
+            details += (details.isEmpty ? "" : " • ") + "\(voteAvg)/10 ★"
         }
         return details
     }

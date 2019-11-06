@@ -30,10 +30,8 @@ public protocol MovieCollectionViewModelType {
     var outputs: MovieCollectionViewModelOutputs { get }
 }
 
-public final class MovieCollectionViewModel:
-    MovieCollectionViewModelType, MovieCollectionViewModelOutputs
-{
-    private let inputs:MovieCollectionViewModelInputs
+public final class MovieCollectionViewModel: MovieCollectionViewModelType, MovieCollectionViewModelOutputs {
+    private let inputs: MovieCollectionViewModelInputs
     private let disposeBag = DisposeBag()
     private let _movies = BehaviorRelay<[Movie]>(value: [])
     private let _isFetching = BehaviorRelay<Bool>(value: false)
@@ -47,7 +45,7 @@ public final class MovieCollectionViewModel:
         return self
     }
     
-    public init(_ inputs:MovieCollectionViewModelInputs) {
+    public init(_ inputs: MovieCollectionViewModelInputs) {
         self.inputs = inputs
         inputs.collectionTypeSelected
             .drive(onNext: { [weak self] (type) in
@@ -86,7 +84,7 @@ public final class MovieCollectionViewModel:
         guard index < _movies.value.count else {
             return nil
         }
-        let vmInput = MovieDetailViewModelInputs(movie: _movies.value[index] , movieRepository: inputs.movieRepository)
+        let vmInput = MovieDetailViewModelInputs(movie: _movies.value[index], movieRepository: inputs.movieRepository)
         return MovieDetailViewModel(vmInput)
     }
     

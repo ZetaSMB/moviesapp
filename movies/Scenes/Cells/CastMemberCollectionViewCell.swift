@@ -21,7 +21,7 @@ public final class CastMemberCollectionViewCell: UICollectionViewCell {
         self.setupUI()
     }
     
-    fileprivate func setupUI(){
+    fileprivate func setupUI() {
         self.containerView.layer.cornerRadius = 40.0
         self.containerView.layer.masksToBounds = true
         self.profileImageView.contentMode = .scaleAspectFill

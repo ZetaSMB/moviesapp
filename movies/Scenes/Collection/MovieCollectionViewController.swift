@@ -20,7 +20,6 @@ class MovieCollectionViewController: UIViewController {
     var movieCollectionViewModel: MovieCollectionViewModel!
     let disposeBag = DisposeBag()
     
-    
     fileprivate enum UIConstants {
         static let margin: CGFloat = 15.0
         static let nbrOfItemsInARow: CGFloat = 2.0
@@ -57,7 +56,7 @@ class MovieCollectionViewController: UIViewController {
         var idx = 0
         for collectionType in TMDbMovieCollection.allCases {
             self.categoryCollectionSegControl.insertSegment(withTitle: collectionType.description, at: idx, animated: false)
-            idx+=1
+            idx += 1
         }
         self.categoryCollectionSegControl.selectedSegmentIndex = 0
     }
@@ -90,7 +89,7 @@ extension MovieCollectionViewController: UICollectionViewDelegate {
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        if let vm = movieCollectionViewModel.outputs.viewModelDetailForMovie(at: indexPath.row), let vcDetail = MovieDetailViewController.createMovieDetailController(detailViewModel:vm) {
+        if let vm = movieCollectionViewModel.outputs.viewModelDetailForMovie(at: indexPath.row), let vcDetail = MovieDetailViewController.createMovieDetailController(detailViewModel: vm) {
             self.navigationController?.pushViewController(vcDetail, animated: true)
         }
     }
@@ -99,8 +98,8 @@ extension MovieCollectionViewController: UICollectionViewDelegate {
 extension MovieCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let screenSize = UIScreen.main.bounds
-        let cellWidth = (screenSize.width - (UIConstants.margin*(UIConstants.nbrOfItemsInARow+1))) / UIConstants.nbrOfItemsInARow
-        let cellHeight = cellWidth*ImageSize.heightPosterRatio;
+        let cellWidth = (screenSize.width - (UIConstants.margin * (UIConstants.nbrOfItemsInARow + 1))) / UIConstants.nbrOfItemsInARow
+        let cellHeight = cellWidth * ImageSize.heightPosterRatio
         return CGSize(width: cellWidth, height: cellHeight)
     }
     

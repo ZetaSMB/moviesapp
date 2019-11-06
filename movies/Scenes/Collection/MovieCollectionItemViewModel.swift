@@ -18,7 +18,6 @@ public struct MovieCollectionItemViewModel {
         return $0
     }(DateFormatter())
     
-    
     init(withMovie movie: Movie) {
         self.movie = movie
     }
@@ -30,11 +29,11 @@ public struct MovieCollectionItemViewModel {
         return nil
     }
     
-    var title : String? {
+    var title: String? {
         return movie.title
     }
     
-    var overview : String? {
+    var overview: String? {
         return movie.overview
     }    
 }

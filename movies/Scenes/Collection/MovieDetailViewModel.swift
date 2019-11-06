@@ -23,7 +23,6 @@ struct MovieCollectionItemViewModel {
         return $0
     }(DateFormatter())
     
-    
     init(movie: Movie) {
         self.movie = movie
     }

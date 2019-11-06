@@ -17,25 +17,32 @@ protocol TMDbService {
     func searchMovie(query: String, successHandler: @escaping (_ response: MoviesResponse) -> Void, errorHandler: @escaping(_ error: Error) -> Void)
 }
 
-public enum TMDbMovieCollection : String, CustomStringConvertible, CaseIterable {    
+public enum TMDbMovieCollection: String, CustomStringConvertible, CaseIterable {    
     case upcoming
     case popular
     case topRated = "top_rated"
     
     public init?(index: Int) {
         switch index {
-        case 0: self = .upcoming
-        case 1: self = .popular
-        case 2: self = .topRated
-        default: return nil
+        case 0:
+            self = .upcoming
+        case 1:
+            self = .popular
+        case 2:
+            self = .topRated
+        default:
+            return nil
         }
     }
     
     public var description: String {
         switch self {
-        case .upcoming: return "Upcoming"
-        case .popular: return "Popular"
-        case .topRated: return "Top Rated"
+        case .upcoming:
+            return "Upcoming"
+        case .popular:
+            return "Popular"
+        case .topRated:
+            return "Top Rated"
         }
     }
 }

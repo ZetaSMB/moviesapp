@@ -46,7 +46,7 @@ class MovieDetailViewController: UIViewController {
     // MARK: - Reactive properties
     
     private lazy var backgroundImagePath: Driver<ImagePath> = makeBackgroundImagePath()
-    let disposeBag: DisposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     
     // MARK: - Initializer
     
@@ -143,8 +143,7 @@ class MovieDetailViewController: UIViewController {
     
     fileprivate func populate(forFilmDetail filmDetail: FilmDetail) {
         UIView.animate(withDuration: 0.2) { self.filmSubDetailsView.alpha = 1.0 }
-        if let runtime = filmDetail.runtime { self.filmRuntimeLabel.text = "\(runtime) min" }
-        else { self.filmRuntimeLabel.text = " - " }
+        if let runtime = filmDetail.runtime { self.filmRuntimeLabel.text = "\(runtime) min" } else { self.filmRuntimeLabel.text = " - " }
         self.filmRatingLabel.text = "\(filmDetail.voteAverage)/10"
         self.blurredImageView.contentMode = .scaleAspectFill
         if let backdropPath = filmDetail.backdropPath {
@@ -176,8 +175,10 @@ class MovieDetailViewController: UIViewController {
             .filmDetail
             .drive(onNext: { [weak self] (result) in
                 switch result {
-                case .success(let value): self?.populate(forFilmDetail: value)
-                case .failure: break
+                case .success(let value):
+                    self?.populate(forFilmDetail: value)
+                case .failure:
+                    break
                 }
             }).disposed(by: disposeBag)
         
@@ -191,8 +192,8 @@ class MovieDetailViewController: UIViewController {
             .credits
             .map { $0.value?.crew ?? [] }
             .asObservable()
-            .bind(to: self.crewCollectionView.rx.items(cellIdentifier: PersonCollectionViewCell.defaultReuseIdentifier, cellType: PersonCollectionViewCell.self)) {
-                (row, person, cell) in
+            .bind(to: self.crewCollectionView.rx.items(cellIdentifier: PersonCollectionViewCell.defaultReuseIdentifier,
+                                                       cellType: PersonCollectionViewCell.self)) { (_, person, cell) in
                 cell.populate(with: person)
             }.disposed(by: disposeBag)
         
@@ -200,8 +201,8 @@ class MovieDetailViewController: UIViewController {
             .credits
             .map { $0.value?.cast ?? [] }
             .asObservable()
-            .bind(to: self.castCollectionView.rx.items(cellIdentifier: PersonCollectionViewCell.defaultReuseIdentifier, cellType: PersonCollectionViewCell.self)) {
-                (row, person, cell) in
+            .bind(to: self.castCollectionView.rx.items(cellIdentifier: PersonCollectionViewCell.defaultReuseIdentifier,
+                                                       cellType: PersonCollectionViewCell.self)) { (_, person, cell) in
                 cell.populate(with: person)
             }.disposed(by: disposeBag)
         
@@ -236,8 +237,8 @@ class MovieDetailViewController: UIViewController {
             .filmDetail
             .map { $0.value?.videos ?? [] }
             .asObservable()
-            .bind(to: videosCollectionView.rx.items(cellIdentifier: VideoCollectionViewCell.defaultReuseIdentifier, cellType: VideoCollectionViewCell.self)) {
-                (row, video, cell) in
+            .bind(to: videosCollectionView.rx.items(cellIdentifier: VideoCollectionViewCell.defaultReuseIdentifier,
+                                                    cellType: VideoCollectionViewCell.self)) { (_, video, cell) in
                 if let thumbnailURL = video.youtubeThumbnailURL {
                     cell.videoThumbnailImageView.sd_setImage(with: thumbnailURL)
                 } else {

@@ -8,7 +8,7 @@
 
 import Alamofire
 
-public enum TMDbRequest : URLRequestConvertible {
+public enum TMDbRequest: URLRequestConvertible {
     
     enum Constants {
         static let baseURLPath = "https://api.themoviedb.org/3"
@@ -45,7 +45,7 @@ public enum TMDbRequest : URLRequestConvertible {
     }
     
     var parameters: [String: Any] {
-        return ["api_key":Constants.apiKey]
+        return ["api_key": Constants.apiKey]
 //        switch self {
 //        case .tags(let contentID):
 //            return ["content": contentID]

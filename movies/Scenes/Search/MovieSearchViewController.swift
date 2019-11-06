@@ -23,7 +23,9 @@ class MovieSearchViewController: UIViewController {
         super.viewDidLoad()
         
         setupNavigationBar()
-        let searchBar = self.navigationItem.searchController!.searchBar
+        guard  let searchBar = self.navigationItem.searchController?.searchBar else {
+            fatalError("wrong controller")
+        }
         
         let vmInputs = MovieSearchViewModelInputs(movieRepository: TMDbRepository.shared,
                                                   query: searchBar.rx.text.orEmpty.asDriver())
@@ -93,7 +95,7 @@ extension MovieSearchViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let vm = movieSearchViewModel.outputs.viewModelDetailForMovie(at: indexPath.row), let vcDetail = MovieDetailViewController.createMovieDetailController(detailViewModel:vm) {
+        if let vm = movieSearchViewModel.outputs.viewModelDetailForMovie(at: indexPath.row), let vcDetail = MovieDetailViewController.createMovieDetailController(detailViewModel: vm) {
             self.navigationController?.pushViewController(vcDetail, animated: true)
         }
     }

@@ -11,13 +11,11 @@ import UIKit
 public final class MovieCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var filmPosterImageView: UIImageView!
-
     
     override public func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor(white: 0.8, alpha: 0.15)
     }
-    
     
     func configure(with viewModel: MovieCollectionItemViewModel?) {
         if let posterURL = viewModel?.posterURL {

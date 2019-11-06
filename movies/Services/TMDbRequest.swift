@@ -8,11 +8,11 @@
 
 import Alamofire
 
-public enum TMDbRequest : URLRequestConvertible {
+public enum TMDbRequest: URLRequestConvertible {
     
     enum Constants {
         static let baseURLPath = "https://api.themoviedb.org/3"
-        static let apiKey = "REPLACE WITH A VALID KEY"
+        static let apiKey = ProcessInfo.processInfo.environment["TMDBAPIKEY"] ?? ""
     }
     
     case collection(TMDbMovieCollection)
@@ -46,11 +46,11 @@ public enum TMDbRequest : URLRequestConvertible {
     }
     
     var parameters: [String: Any] {
-        var params = ["api_key":Constants.apiKey]
+        var params = ["api_key": Constants.apiKey]
         switch self {
-        case .collection(_):
+        case .collection:
             break
-        case .fetchMovieByID(_):
+        case .fetchMovieByID:
             params["append_to_response"] = "videos,credits"
         case .searchByText(let q):
             params["append_to_response"] = "videos,credits"

@@ -21,7 +21,6 @@ class TMDbRepository: TMDbService {
         return jsonDecoder
     }()
     
-    
     fileprivate func fetchCodableEntity<T: Codable>(from request: TMDbRequest, successHandler: @escaping (T) -> Void, errorHandler: @escaping (Error) -> Void) {
         
         Alamofire.request(request)

@@ -15,7 +15,7 @@ DEPENDENCIES:
   - RxSwift
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Alamofire
     - AlamofireImage
     - RxAtomic
@@ -31,4 +31,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: d0ad26d69390fd94ad896ef08884b593bb1e24e6
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.4
