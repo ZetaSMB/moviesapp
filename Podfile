@@ -9,5 +9,5 @@ target 'movies' do
   pod 'AlamofireImage'
   pod 'RxSwift'
   pod 'RxCocoa'
-  
+  pod 'RealmSwift'
 end

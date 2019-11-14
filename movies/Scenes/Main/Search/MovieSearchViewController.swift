@@ -10,11 +10,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class MovieSearchViewController: UIViewController {
-
+class MovieSearchViewController: UIViewController, HasLogoutController {
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
+    var onLogoutAction: OptionalAction = nil
     
     var movieSearchViewModel: MovieSearchViewModel!
     let disposeBag = DisposeBag()
@@ -79,6 +81,12 @@ class MovieSearchViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
         tableView.registerReusableCell(MovieTableViewCell.self)
+    }
+    
+    @IBAction func onExitTapped(_ sender: Any) {
+        if let onLogout = onLogoutAction {
+           onLogout()
+        }
     }
 }
 

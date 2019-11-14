@@ -13,9 +13,24 @@ import Foundation
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var rootController: UINavigationController {
+        if let w = self.window, let root = w.rootViewController as? UINavigationController {
+            return root
+        }
+        return UINavigationController()
+    }
+    
+    private lazy var applicationCoordinator: Coordinator = ApplicationCoordinator(router: Router(rootController: self.rootController), coordinatorFactory: CoordinatorFactory(), dependenciesAssembler: CoreDependenciesAssembler())
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        window?.rootViewController = UINavigationController(rootViewController: UIViewController())
+        
         TMDbRepository.shared.configureCache()
+        
+        self.applicationCoordinator.start(with: nil)
         return true
     }
 

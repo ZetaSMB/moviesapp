@@ -8,6 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		93B2A3AEF0C25C1755C8AC6F /* Pods_movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0702A81CE54BCAFF7D839D55 /* Pods_movies.framework */; };
+		B819328B238445470044CE1E /* HasLogoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B819328A238445470044CE1E /* HasLogoutController.swift */; };
+		B8253C5C237C8340007815D5 /* DeepLinkOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8253C4D237C8340007815D5 /* DeepLinkOption.swift */; };
+		B8253C5D237C8340007815D5 /* LaunchInstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8253C4E237C8340007815D5 /* LaunchInstructor.swift */; };
+		B8253C5E237C8340007815D5 /* ViewController+Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8253C50237C8340007815D5 /* ViewController+Coordinator.swift */; };
+		B8253C5F237C8340007815D5 /* CoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8253C52237C8340007815D5 /* CoordinatorOutput.swift */; };
+		B8253C60237C8340007815D5 /* BaseViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8253C53237C8340007815D5 /* BaseViewControllerProtocol.swift */; };
+		B8253C61237C8340007815D5 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8253C54237C8340007815D5 /* Presentable.swift */; };
+		B8253C62237C8340007815D5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8253C55237C8340007815D5 /* Coordinator.swift */; };
+		B8253C63237C8340007815D5 /* CoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8253C57237C8340007815D5 /* CoordinatorFactory.swift */; };
+		B8253C64237C8340007815D5 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8253C59237C8340007815D5 /* BaseCoordinator.swift */; };
+		B8253C65237C8340007815D5 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8253C5B237C8340007815D5 /* Router.swift */; };
+		B8253C67237C84AE007815D5 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8253C66237C84AE007815D5 /* AuthCoordinator.swift */; };
+		B88AF484237B42C700EDE287 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B88AF483237B42C700EDE287 /* Auth.storyboard */; };
+		B88AF48D237B42EC00EDE287 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88AF486237B42EC00EDE287 /* LoginViewModel.swift */; };
+		B88AF48F237B42EC00EDE287 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88AF488237B42EC00EDE287 /* LoginViewController.swift */; };
+		B88AF491237B42EC00EDE287 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88AF48B237B42EC00EDE287 /* RegisterViewController.swift */; };
+		B88AF492237B42EC00EDE287 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88AF48C237B42EC00EDE287 /* RegisterViewModel.swift */; };
+		B8BCC8FA237DE3E600C8AF80 /* AuthProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BCC8F9237DE3E600C8AF80 /* AuthProtocol.swift */; };
+		B8BCC8FC237DE41D00C8AF80 /* RealmAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BCC8FB237DE41D00C8AF80 /* RealmAuthService.swift */; };
+		B8BCC8FE237DE7BF00C8AF80 /* RealmConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BCC8FD237DE7BF00C8AF80 /* RealmConstants.swift */; };
+		B8E8CD48237C87D30058B6AE /* DependenciesAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8CD47237C87D30058B6AE /* DependenciesAssembler.swift */; };
+		B8E8CD4D237C8B450058B6AE /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8CD4B237C8B450058B6AE /* UIStoryboard+Extensions.swift */; };
+		B8E8CD4F237C8F310058B6AE /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8CD4E237C8F300058B6AE /* ApplicationCoordinator.swift */; };
+		B8E8CD51237C8F9C0058B6AE /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8CD50237C8F9C0058B6AE /* MainCoordinator.swift */; };
+		B8E8CD53237C9F940058B6AE /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8CD52237C9F940058B6AE /* ViewControllerFactory.swift */; };
+		B8E8CD55237CA0850058B6AE /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8CD54237CA0850058B6AE /* Storyboard.swift */; };
 		DF0C9E362265AD6600156BD4 /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0C9E352265AD6600156BD4 /* MovieDetailViewModel.swift */; };
 		DF0C9E3922668F0300156BD4 /* CastMemberItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0C9E3822668F0300156BD4 /* CastMemberItemViewModel.swift */; };
 		DF0C9E3B2266BE0300156BD4 /* MovieSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0C9E3A2266BE0300156BD4 /* MovieSearchViewModel.swift */; };
@@ -50,6 +76,32 @@
 /* Begin PBXFileReference section */
 		01AF91533FE542623CD8F061 /* Pods-movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-movies.debug.xcconfig"; path = "Target Support Files/Pods-movies/Pods-movies.debug.xcconfig"; sourceTree = "<group>"; };
 		0702A81CE54BCAFF7D839D55 /* Pods_movies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_movies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B819328A238445470044CE1E /* HasLogoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasLogoutController.swift; sourceTree = "<group>"; };
+		B8253C4D237C8340007815D5 /* DeepLinkOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepLinkOption.swift; sourceTree = "<group>"; };
+		B8253C4E237C8340007815D5 /* LaunchInstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchInstructor.swift; sourceTree = "<group>"; };
+		B8253C50237C8340007815D5 /* ViewController+Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Coordinator.swift"; sourceTree = "<group>"; };
+		B8253C52237C8340007815D5 /* CoordinatorOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorOutput.swift; sourceTree = "<group>"; };
+		B8253C53237C8340007815D5 /* BaseViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewControllerProtocol.swift; sourceTree = "<group>"; };
+		B8253C54237C8340007815D5 /* Presentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
+		B8253C55237C8340007815D5 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		B8253C57237C8340007815D5 /* CoordinatorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorFactory.swift; sourceTree = "<group>"; };
+		B8253C59237C8340007815D5 /* BaseCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		B8253C5B237C8340007815D5 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		B8253C66237C84AE007815D5 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		B88AF483237B42C700EDE287 /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		B88AF486237B42EC00EDE287 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		B88AF488237B42EC00EDE287 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B88AF48B237B42EC00EDE287 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		B88AF48C237B42EC00EDE287 /* RegisterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		B8BCC8F9237DE3E600C8AF80 /* AuthProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProtocol.swift; sourceTree = "<group>"; };
+		B8BCC8FB237DE41D00C8AF80 /* RealmAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAuthService.swift; sourceTree = "<group>"; };
+		B8BCC8FD237DE7BF00C8AF80 /* RealmConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConstants.swift; sourceTree = "<group>"; };
+		B8E8CD47237C87D30058B6AE /* DependenciesAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependenciesAssembler.swift; sourceTree = "<group>"; };
+		B8E8CD4B237C8B450058B6AE /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extensions.swift"; sourceTree = "<group>"; };
+		B8E8CD4E237C8F300058B6AE /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		B8E8CD50237C8F9C0058B6AE /* MainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		B8E8CD52237C9F940058B6AE /* ViewControllerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		B8E8CD54237CA0850058B6AE /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		C6532638B124BA4351E770F0 /* Pods-movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-movies.release.xcconfig"; path = "Target Support Files/Pods-movies/Pods-movies.release.xcconfig"; sourceTree = "<group>"; };
 		DF0C9E352265AD6600156BD4 /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
 		DF0C9E3822668F0300156BD4 /* CastMemberItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastMemberItemViewModel.swift; sourceTree = "<group>"; };
@@ -103,6 +155,146 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B8253C4B237C8340007815D5 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				B8E8CD4E237C8F300058B6AE /* ApplicationCoordinator.swift */,
+				B8253C66237C84AE007815D5 /* AuthCoordinator.swift */,
+				B8E8CD50237C8F9C0058B6AE /* MainCoordinator.swift */,
+				B8253C4C237C8340007815D5 /* Enums */,
+				B8253C4F237C8340007815D5 /* Extensions */,
+				B8253C51237C8340007815D5 /* Protocols */,
+				B8253C56237C8340007815D5 /* Factory */,
+				B8253C58237C8340007815D5 /* Base */,
+				B8253C5A237C8340007815D5 /* Router */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		B8253C4C237C8340007815D5 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				B8253C4D237C8340007815D5 /* DeepLinkOption.swift */,
+				B8253C4E237C8340007815D5 /* LaunchInstructor.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		B8253C4F237C8340007815D5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B8253C50237C8340007815D5 /* ViewController+Coordinator.swift */,
+				B8E8CD54237CA0850058B6AE /* Storyboard.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B8253C51237C8340007815D5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B8253C52237C8340007815D5 /* CoordinatorOutput.swift */,
+				B8253C53237C8340007815D5 /* BaseViewControllerProtocol.swift */,
+				B8253C54237C8340007815D5 /* Presentable.swift */,
+				B8253C55237C8340007815D5 /* Coordinator.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B8253C56237C8340007815D5 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				B8253C57237C8340007815D5 /* CoordinatorFactory.swift */,
+				B8E8CD52237C9F940058B6AE /* ViewControllerFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		B8253C58237C8340007815D5 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B8253C59237C8340007815D5 /* BaseCoordinator.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B8253C5A237C8340007815D5 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B8253C5B237C8340007815D5 /* Router.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B83CD48B238444220039A433 /* commonMain */ = {
+			isa = PBXGroup;
+			children = (
+				B819328A238445470044CE1E /* HasLogoutController.swift */,
+			);
+			path = commonMain;
+			sourceTree = "<group>";
+		};
+		B88AF481237B42A100EDE287 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DF3FAC08225906D0004314A1 /* Main.storyboard */,
+				B83CD48B238444220039A433 /* commonMain */,
+				DFBEBFA82262308B001D1735 /* Styles */,
+				DF44D166226212CA009B712D /* Cells */,
+				DF3FAC37225EB0C6004314A1 /* Search */,
+				DF3FAC36225EB0AB004314A1 /* CollectionControllers */,
+				DFBEBFB2226581A0001D1735 /* MovieDetail */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		B88AF482237B42B700EDE287 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				B88AF483237B42C700EDE287 /* Auth.storyboard */,
+				B88AF485237B42EC00EDE287 /* Login */,
+				B88AF489237B42EC00EDE287 /* Register */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		B88AF485237B42EC00EDE287 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B88AF488237B42EC00EDE287 /* LoginViewController.swift */,
+				B88AF486237B42EC00EDE287 /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B88AF489237B42EC00EDE287 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				B88AF48B237B42EC00EDE287 /* RegisterViewController.swift */,
+				B88AF48C237B42EC00EDE287 /* RegisterViewModel.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		B8BCC8F8237DDED300C8AF80 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				B8BCC8F9237DE3E600C8AF80 /* AuthProtocol.swift */,
+				B8BCC8FB237DE41D00C8AF80 /* RealmAuthService.swift */,
+				B8BCC8FD237DE7BF00C8AF80 /* RealmConstants.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		B8E8CD49237C880A0058B6AE /* restAPI */ = {
+			isa = PBXGroup;
+			children = (
+				DF3FAC2A225D7FF8004314A1 /* TMDbServiceProtocol.swift */,
+				DF3FAC31225D8EEF004314A1 /* TMDbRepository.swift */,
+				DF3FAC2F225D816C004314A1 /* TMDbRequest.swift */,
+			);
+			path = restAPI;
+			sourceTree = "<group>";
+		};
 		DF3FABF6225906D0004314A1 = {
 			isa = PBXGroup;
 			children = (
@@ -127,9 +319,10 @@
 			isa = PBXGroup;
 			children = (
 				DF44D16B226213C8009B712D /* Extensions */,
+				DF3FAC29225D7F09004314A1 /* Services */,
+				B8253C4B237C8340007815D5 /* Coordinators */,
 				DF3FAC33225EAFE6004314A1 /* Scenes */,
 				DF3FAC2C225D80DA004314A1 /* Models */,
-				DF3FAC29225D7F09004314A1 /* Services */,
 				DF3FAC02225906D0004314A1 /* AppDelegate.swift */,
 				DF3FAC0B225906D1004314A1 /* Assets.xcassets */,
 				DF3FAC0D225906D1004314A1 /* LaunchScreen.storyboard */,
@@ -150,9 +343,9 @@
 		DF3FAC29225D7F09004314A1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				DF3FAC2A225D7FF8004314A1 /* TMDbServiceProtocol.swift */,
-				DF3FAC31225D8EEF004314A1 /* TMDbRepository.swift */,
-				DF3FAC2F225D816C004314A1 /* TMDbRequest.swift */,
+				B8E8CD47237C87D30058B6AE /* DependenciesAssembler.swift */,
+				B8BCC8F8237DDED300C8AF80 /* Realm */,
+				B8E8CD49237C880A0058B6AE /* restAPI */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -168,24 +361,20 @@
 		DF3FAC33225EAFE6004314A1 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				DF3FAC08225906D0004314A1 /* Main.storyboard */,
-				DFBEBFA82262308B001D1735 /* Styles */,
-				DF44D166226212CA009B712D /* Cells */,
-				DF3FAC37225EB0C6004314A1 /* Search */,
-				DF3FAC36225EB0AB004314A1 /* Collection */,
-				DFBEBFB2226581A0001D1735 /* MovieDetail */,
+				B88AF482237B42B700EDE287 /* Auth */,
+				B88AF481237B42A100EDE287 /* Main */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
 		};
-		DF3FAC36225EB0AB004314A1 /* Collection */ = {
+		DF3FAC36225EB0AB004314A1 /* CollectionControllers */ = {
 			isa = PBXGroup;
 			children = (
 				DF3FAC04225906D0004314A1 /* MovieCollectionViewController.swift */,
 				DF3FAC34225EB079004314A1 /* MovieCollectionViewModel.swift */,
 				DF3FAC38225EB25F004314A1 /* MovieCollectionItemViewModel.swift */,
 			);
-			path = Collection;
+			path = CollectionControllers;
 			sourceTree = "<group>";
 		};
 		DF3FAC37225EB0C6004314A1 /* Search */ = {
@@ -214,6 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				DF44D16C22621400009B712D /* ReusableCollectionViews.swift */,
+				B8E8CD4B237C8B450058B6AE /* UIStoryboard+Extensions.swift */,
 				DF44D17222621632009B712D /* UIImageView+Defaults.swift */,
 				DFBEBFA9226232DC001D1735 /* UIScrollView+Reactive.swift */,
 			);
@@ -308,9 +498,11 @@
 				TargetAttributes = {
 					DF3FABFE225906D0004314A1 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1030;
 					};
 					DF3FAC14225906D1004314A1 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1030;
 						TestTargetID = DF3FABFE225906D0004314A1;
 					};
 				};
@@ -345,6 +537,7 @@
 				DF3FAC0C225906D1004314A1 /* Assets.xcassets in Resources */,
 				DF44D16A226212E1009B712D /* MovieCollectionViewCell.xib in Resources */,
 				DF3FAC0A225906D0004314A1 /* Main.storyboard in Resources */,
+				B88AF484237B42C700EDE287 /* Auth.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,23 +615,48 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF3FAC32225D8EEF004314A1 /* TMDbRepository.swift in Sources */,
+				B8253C61237C8340007815D5 /* Presentable.swift in Sources */,
+				B8E8CD4D237C8B450058B6AE /* UIStoryboard+Extensions.swift in Sources */,
+				B8253C5F237C8340007815D5 /* CoordinatorOutput.swift in Sources */,
+				B8253C5C237C8340007815D5 /* DeepLinkOption.swift in Sources */,
+				B8253C65237C8340007815D5 /* Router.swift in Sources */,
 				DFBEBFAA226232DC001D1735 /* UIScrollView+Reactive.swift in Sources */,
+				B88AF492237B42EC00EDE287 /* RegisterViewModel.swift in Sources */,
 				DFBEBFA72262306B001D1735 /* Styles.swift in Sources */,
+				B8BCC8FA237DE3E600C8AF80 /* AuthProtocol.swift in Sources */,
 				DF3FAC35225EB079004314A1 /* MovieCollectionViewModel.swift in Sources */,
 				DF3FAC2B225D7FF8004314A1 /* TMDbServiceProtocol.swift in Sources */,
 				DF0C9E3922668F0300156BD4 /* CastMemberItemViewModel.swift in Sources */,
+				B8BCC8FC237DE41D00C8AF80 /* RealmAuthService.swift in Sources */,
 				DF0C9E3B2266BE0300156BD4 /* MovieSearchViewModel.swift in Sources */,
+				B8253C60237C8340007815D5 /* BaseViewControllerProtocol.swift in Sources */,
+				B819328B238445470044CE1E /* HasLogoutController.swift in Sources */,
 				DF3FAC30225D816C004314A1 /* TMDbRequest.swift in Sources */,
+				B8E8CD53237C9F940058B6AE /* ViewControllerFactory.swift in Sources */,
+				B8E8CD4F237C8F310058B6AE /* ApplicationCoordinator.swift in Sources */,
 				DF44D16D22621400009B712D /* ReusableCollectionViews.swift in Sources */,
+				B8E8CD55237CA0850058B6AE /* Storyboard.swift in Sources */,
 				DF3FAC2E225D8117004314A1 /* TMDbMovie.swift in Sources */,
+				B8253C63237C8340007815D5 /* CoordinatorFactory.swift in Sources */,
+				B8E8CD48237C87D30058B6AE /* DependenciesAssembler.swift in Sources */,
 				DF0C9E362265AD6600156BD4 /* MovieDetailViewModel.swift in Sources */,
+				B8253C67237C84AE007815D5 /* AuthCoordinator.swift in Sources */,
+				B8253C62237C8340007815D5 /* Coordinator.swift in Sources */,
 				DF3FAC07225906D0004314A1 /* MovieSearchViewController.swift in Sources */,
 				DF44D17322621632009B712D /* UIImageView+Defaults.swift in Sources */,
+				B88AF48D237B42EC00EDE287 /* LoginViewModel.swift in Sources */,
 				DF44D169226212E1009B712D /* MovieCollectionViewCell.swift in Sources */,
 				DF8771822266C30B00CA7841 /* MovieTableViewCell.swift in Sources */,
 				DF3FAC03225906D0004314A1 /* AppDelegate.swift in Sources */,
+				B8253C64237C8340007815D5 /* BaseCoordinator.swift in Sources */,
 				DF3FAC05225906D0004314A1 /* MovieCollectionViewController.swift in Sources */,
+				B8253C5D237C8340007815D5 /* LaunchInstructor.swift in Sources */,
+				B88AF491237B42EC00EDE287 /* RegisterViewController.swift in Sources */,
 				DFBEBFBC226586B4001D1735 /* CastMemberCollectionViewCell.swift in Sources */,
+				B8E8CD51237C8F9C0058B6AE /* MainCoordinator.swift in Sources */,
+				B8253C5E237C8340007815D5 /* ViewController+Coordinator.swift in Sources */,
+				B8BCC8FE237DE7BF00C8AF80 /* RealmConstants.swift in Sources */,
+				B88AF48F237B42EC00EDE287 /* LoginViewController.swift in Sources */,
 				DF3FAC39225EB25F004314A1 /* MovieCollectionItemViewModel.swift in Sources */,
 				DFBEBFB7226581C4001D1735 /* MovieDetailViewController.swift in Sources */,
 			);
@@ -614,7 +832,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeta.movies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -635,7 +853,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeta.movies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -655,7 +873,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeta.moviesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/movies.app/movies";
 			};
@@ -676,7 +894,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeta.moviesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/movies.app/movies";
 			};
