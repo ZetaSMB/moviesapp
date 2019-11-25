@@ -80,13 +80,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="aA2-oa-zhg">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" image="exit" id="rQZ-ed-u2n">
-                            <connections>
-                                <action selector="onExitTapped:" destination="9pv-A4-QxB" id="bDx-fv-Qka"/>
-                            </connections>
-                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dBG-Th-RXo">
-                            <rect key="frame" x="59" y="7" width="282" height="30"/>
+                            <rect key="frame" x="46.5" y="7" width="282" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="First objetc"/>
@@ -339,7 +334,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yfe-D4-aXF">
-                                <rect key="frame" x="0.0" y="64" width="375" height="510"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="d1d-Ra-bbV" id="eZc-a1-udz"/>
@@ -371,15 +366,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nw1-Fw-XHx"/>
                     </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Search Movie" largeTitleDisplayMode="always" id="WRP-Ng-yas">
-                        <barButtonItem key="leftBarButtonItem" image="exit" id="FhY-XS-x0o">
-                            <connections>
-                                <action selector="onExitTapped:" destination="d1d-Ra-bbV" id="k0f-0V-ndl"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationItem key="navigationItem" title="Search Movie" largeTitleDisplayMode="always" id="WRP-Ng-yas"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="uAc-bB-TOL" id="WU4-43-Spi"/>
                         <outlet property="infoLabel" destination="XEh-gf-UEz" id="bIV-AZ-lrL"/>
@@ -391,7 +378,4 @@
             <point key="canvasLocation" x="1783" y="340"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="exit" width="26" height="26"/>
-    </resources>
 </document>

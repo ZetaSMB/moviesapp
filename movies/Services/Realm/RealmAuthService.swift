@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-final class RealmAuthService: AuthService {
+final class RealmAuthService: AuthServiceProtocol {
     
     func isLoggedInUser() -> Bool {
         return SyncUser.current != nil

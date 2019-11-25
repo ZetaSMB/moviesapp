@@ -1,8 +1,8 @@
 //
-//  ExitableViewController.swift
+//  HasLogoutController.swift
 //  movies
 //
-//  Created by Santiago Beltramone on 11/19/19.
+//  Created by Santiago Beltramone on 11/25/19.
 //  Copyright © 2019 zeta. All rights reserved.
 //
 

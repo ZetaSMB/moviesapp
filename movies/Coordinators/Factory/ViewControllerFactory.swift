@@ -12,13 +12,15 @@ class ViewControllerFactory {
     
     func instantiateLoginViewController(_ dependenciesAssembler: DependenciesAssembler) -> LoginViewController {
         let loginVC: LoginViewController = UIStoryboard.auth.instantiateVC()
-        loginVC.viewModel = LoginViewModel()
+        loginVC.viewModelFactory = { (loginViewModelInputs) in
+            return LoginViewModel(loginViewModelInputs, authService: dependenciesAssembler.resolveAuthService())
+        }
         return loginVC
     }
     
     func instantiateRegisterViewController(_ dependenciesAssembler: DependenciesAssembler) -> RegisterViewController {
         let regVC: RegisterViewController = UIStoryboard.auth.instantiateVC()
-        regVC.viewModel = RegisterViewModel()
+//        regVC.viewModel = RegisterViewModel()
         return regVC
     }
     

@@ -14,10 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var rootController: UINavigationController {
-        if let w = self.window, let root = w.rootViewController as? UINavigationController {
-            return root
-        }
-        return UINavigationController()
+        return self.window!.rootViewController as? UINavigationController ?? UINavigationController()
     }
     
     private lazy var applicationCoordinator: Coordinator = ApplicationCoordinator(router: Router(rootController: self.rootController), coordinatorFactory: CoordinatorFactory(), dependenciesAssembler: CoreDependenciesAssembler())

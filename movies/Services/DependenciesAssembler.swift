@@ -10,7 +10,7 @@ import Foundation
 
 protocol DependenciesAssembler {
     func resolveRestApi() -> TMDbRepository
-    func resolveAuthService() -> AuthService
+    func resolveAuthService() -> AuthServiceProtocol
 }
 
 class CoreDependenciesAssembler: DependenciesAssembler {
@@ -18,7 +18,7 @@ class CoreDependenciesAssembler: DependenciesAssembler {
         return TMDbRepository.shared
     }
     
-    func resolveAuthService() -> AuthService {
+    func resolveAuthService() -> AuthServiceProtocol {
         return RealmAuthService()
     }
 }

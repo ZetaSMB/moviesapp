@@ -10,4 +10,5 @@ target 'movies' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RealmSwift'
+  pod 'PKHUD'
 end
