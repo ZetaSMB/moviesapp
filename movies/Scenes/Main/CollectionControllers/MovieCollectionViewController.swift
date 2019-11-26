@@ -10,12 +10,12 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class MovieCollectionViewController: UIViewController {
-
+class MovieCollectionViewController: UIViewController, HasLogoutController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var errorInfoLabel: UILabel!
     @IBOutlet weak var categoryCollectionSegControl: UISegmentedControl!
+    var onLogoutAction: OptionalAction = nil
     
     var movieCollectionViewModel: MovieCollectionViewModel!
     let disposeBag = DisposeBag()
@@ -67,7 +67,11 @@ class MovieCollectionViewController: UIViewController {
         collectionView.registerReusableCell(MovieCollectionViewCell.self)
     }
     
+    @IBAction func onLogout(_ sender: Any) {
+        onLogoutAction?()
+    }
 }
+
 extension MovieCollectionViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

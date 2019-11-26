@@ -21,6 +21,8 @@ class RegisterViewController: UIViewController, RegisterViewControllerProtocol {
     @IBOutlet weak var passTxtField: UITextField!
     @IBOutlet weak var confirmPassTxtField: UITextField!
     @IBOutlet weak var registerBtn: UIButton!
+    @IBOutlet weak var backBtn: UIButton!
+    
     private let disposeBag = DisposeBag()
     
     var onRegister: (() -> Void)?
@@ -29,6 +31,11 @@ class RegisterViewController: UIViewController, RegisterViewControllerProtocol {
     // MARK: - Vars & Lets
     var viewModelFactory: (RegisterViewModelInputs) -> RegisterViewModelType = { _ in fatalError("Must provide factory function first.") }
     private var viewModel: RegisterViewModelType?
+    
+    private struct UIColors {
+        static let clearBorderColor = UIColor.clear.cgColor
+        static let redBorderColor = UIColor.red.cgColor
+    }
     
     // MARK: - Controller lifecycle
     
@@ -55,56 +62,64 @@ class RegisterViewController: UIViewController, RegisterViewControllerProtocol {
                 .usernameIsValid
                 .drive(onNext: { [weak self] (valid) in
                     guard let self = self else { return }
-                    self.userTxtField.layer.borderColor = valid ? UIColor.clear.cgColor : UIColor.red.cgColor
+                    self.userTxtField.layer.borderColor = valid ? UIColors.clearBorderColor : UIColors.redBorderColor
                 })
                 .disposed(by: disposeBag)
-            
-//            let borderPassController = BehaviorSubject<Bool>.init(value: true)
-//            borderPassController.bind(to: vm.outputs.passwordIsValid.asObservable())
-//            borderPassController
-//                .observeOn(MainScheduler())
-//                .do(onNext: { (valid) in
-//                    self.passTxtField.layer.borderColor = valid ? UIColor.clear.cgColor : UIColor.red.cgColor
-//                })
-//                .asDriver(onErrorJustReturn: false)
-            
             vm.outputs
-                .passwordIsValid
-                .drive(onNext: { [weak self] (valid) in
-                    guard let self = self else { return }
-                    self.passTxtField.layer.borderColor = valid ? UIColor.clear.cgColor : UIColor.red.cgColor
-                })
-                .disposed(by: disposeBag)
+               .formEnteredIsValid
+               .asObservable()
+               .bind(to: registerBtn.rx.isEnabled)
+               .disposed(by: disposeBag)
 
-            vm.outputs
-                .confirmPasswordIsValid
-                .drive(onNext: { [weak self] (valid) in
-                    guard let self = self else { return }
-                    self.userTxtField.layer.borderColor = valid ? UIColor.clear.cgColor : UIColor.red.cgColor
-                })
-                .disposed(by: disposeBag)
-            
-            vm.outputs
-            .confirmPasswordIsValid
-            .drive(onNext: { [weak self] (valid) in
-                guard let self = self else { return }
-                self.userTxtField.layer.borderColor = valid ? UIColor.clear.cgColor : UIColor.red.cgColor
-            })
-            .disposed(by: disposeBag)
-
-            
+           applyBorderCorrectnessStyleValidation(on: userTxtField, validitySignal: vm.outputs.usernameIsValid.asObservable())
+           applyBorderCorrectnessStyleValidation(on: passTxtField, validitySignal: vm.outputs.passwordIsValid.asObservable())
+           applyBorderCorrectnessStyleValidation(on: confirmPassTxtField, validitySignal: vm.outputs.confirmPasswordIsValid.asObservable())
+           
+           vm.outputs
+               .registerResult
+               .drive(onNext: { [weak self] (result) in
+                  guard let self = self else { return }
+                   switch result {
+                   case .success:
+                       self.onRegister?()
+                   case .failure(let err):
+                       HUD.flash(.labeledError(title: err.title, subtitle: err.message), delay: 1.5, completion: nil)
+                   }
+               })
+               .disposed(by: disposeBag)
         }
         
+        backBtn.rx
+            .tap
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.onBack?()
+            })
+            .disposed(by: disposeBag)
     }
     
-    // MARK: - Actions
-    
-    @IBAction func register() {
-        self.onRegister?()
+    private func applyBorderCorrectnessStyleValidation(on txtField: UITextField, validitySignal: Observable<Bool>) {
+        let hasEditedPassword = txtField.rx
+            .controlEvent([.editingDidBegin])
+            .map({ return true })
+            .asObservable()
+        
+        let borderPassController = BehaviorSubject<CGColor>.init(value: UIColors.clearBorderColor)
+        validitySignal.asObservable()
+            .skipUntil(hasEditedPassword)
+            .map({
+                $0 ?  UIColors.clearBorderColor :  UIColors.redBorderColor
+            })
+            .bind(to: borderPassController)
+            .disposed(by: disposeBag)
+        
+        borderPassController
+            .observeOn(MainScheduler())
+            .asDriver(onErrorJustReturn: UIColors.clearBorderColor)
+            .drive(onNext: { color in
+                txtField.layer.borderColor = color
+            })
+            .disposed(by: disposeBag)
     }
-    
-    @IBAction func back() {
-        self.onBack?()
-    }
-    
 }

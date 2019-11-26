@@ -55,7 +55,7 @@ final class LoginViewModel: LoginViewModelType, LoginViewModelOutputs {
                 self._isFetching.accept(true)
                 authService.login(username: user, password: pass) { (_, err) in
                     self._isFetching.accept(false)
-                    if let _ = err {
+                    if err != nil {
                         self._loginResult.accept(.failure(UserPrintableError(title: UIMessages.loginFailedTitle, message: UIMessages.loginFailedMessage)))
                     } else {
                         self._loginResult.accept(.success(()))

@@ -20,7 +20,9 @@ class ViewControllerFactory {
     
     func instantiateRegisterViewController(_ dependenciesAssembler: DependenciesAssembler) -> RegisterViewController {
         let regVC: RegisterViewController = UIStoryboard.auth.instantiateVC()
-//        regVC.viewModel = RegisterViewModel()
+        regVC.viewModelFactory = { (regViewModelInputs) in
+            return RegisterViewModel(regViewModelInputs, authService: dependenciesAssembler.resolveAuthService())
+        }
         return regVC
     }
     

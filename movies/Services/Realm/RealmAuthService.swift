@@ -24,4 +24,8 @@ final class RealmAuthService: AuthServiceProtocol {
         let creds = SyncCredentials.usernamePassword(username: username, password: password, register: true)
         SyncUser.logIn(with: creds, server: RealmConstants.AUTH_URL, onCompletion: successHandler)
     }
+    
+    func logoutUser() {
+        SyncUser.current?.logOut()
+    }
 }

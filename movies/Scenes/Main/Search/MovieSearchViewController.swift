@@ -15,7 +15,6 @@ class MovieSearchViewController: UIViewController, HasLogoutController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    
     var onLogoutAction: OptionalAction = nil
     
     var movieSearchViewModel: MovieSearchViewModel!
@@ -68,7 +67,7 @@ class MovieSearchViewController: UIViewController, HasLogoutController {
     private func setupNavigationBar() {
         navigationItem.searchController = UISearchController(searchResultsController: nil)
         self.definesPresentationContext = true
-        navigationItem.searchController?.dimsBackgroundDuringPresentation = false
+        navigationItem.searchController?.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController?.hidesNavigationBarDuringPresentation = false
         
         navigationItem.searchController?.searchBar.sizeToFit()

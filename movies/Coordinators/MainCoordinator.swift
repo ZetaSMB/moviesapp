@@ -46,7 +46,7 @@ final class MainCoordinator: BaseCoordinator, CoordinatorFinishOutput {
             case is UINavigationController:
                 applyOnLogoutToChildren(viewController: childController, action: action)
             case is HasLogoutController:
-                if var child = childController as? HasLogoutController {
+                if var child = childController as? HasLogoutController {                    
                     child.onLogoutAction = action
                 }
             default:

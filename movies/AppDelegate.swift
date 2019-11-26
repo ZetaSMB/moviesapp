@@ -14,7 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var rootController: UINavigationController {
+        //swiftlint:disable force_unwrapping
         return self.window!.rootViewController as? UINavigationController ?? UINavigationController()
+        //swiftlint:enable force_unwrapping
     }
     
     private lazy var applicationCoordinator: Coordinator = ApplicationCoordinator(router: Router(rootController: self.rootController), coordinatorFactory: CoordinatorFactory(), dependenciesAssembler: CoreDependenciesAssembler())
@@ -27,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         TMDbRepository.shared.configureCache()
         
-        self.applicationCoordinator.start(with: nil)
+        self.applicationCoordinator.start()
         return true
     }
 

@@ -13,4 +13,5 @@ protocol AuthServiceProtocol {
     func isLoggedInUser() -> Bool
     func login(username: String, password: String, successHandler: @escaping UserCompletionBlock)
     func registerUser(username: String, password: String, successHandler: @escaping UserCompletionBlock)
+    func logoutUser()
 }

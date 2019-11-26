@@ -14,8 +14,16 @@ final class ApplicationCoordinator: BaseCoordinator {
     
     private let coordinatorFactory: CoordinatorFactoryProtocol
     private let router: RouterProtocol
-    private var launchInstructor = LaunchInstructor.configure()
     private let dependenciesAssembler: DependenciesAssembler
+    private let authService: AuthServiceProtocol
+    
+    private var isLoggedInUser: Bool {
+        return authService.isLoggedInUser()
+    }
+    
+    private var launchInstructor: LaunchInstructor {
+        return LaunchInstructor.configure(isAutorized: isLoggedInUser)
+    }
     
     // MARK: - Coordinator
     
@@ -38,7 +46,6 @@ final class ApplicationCoordinator: BaseCoordinator {
         let coordinator = self.coordinatorFactory.makeAuthCoordinatorBox(router: self.router, coordinatorFactory: self.coordinatorFactory, dependenciesAssembler: self.dependenciesAssembler, viewControllerFactory: ViewControllerFactory())
         coordinator.finishFlow = { [unowned self, unowned coordinator] in
             self.removeDependency(coordinator)
-            self.launchInstructor = LaunchInstructor.configure(isAutorized: true)
             self.start()
         }
         addDependency(coordinator)
@@ -49,7 +56,7 @@ final class ApplicationCoordinator: BaseCoordinator {
         let coordinator = self.coordinatorFactory.makeMainCoordinatorBox(router: self.router, coordinatorFactory: CoordinatorFactory(), dependenciesAssembler: self.dependenciesAssembler, viewControllerFactory: ViewControllerFactory())
         coordinator.finishFlow = { [unowned self, unowned coordinator] in
             self.removeDependency(coordinator)
-            self.launchInstructor = LaunchInstructor.configure(isAutorized: false) //TODO: add session manager
+            self.authService.logoutUser()
             self.start()
         }
         addDependency(coordinator)
@@ -62,6 +69,7 @@ final class ApplicationCoordinator: BaseCoordinator {
         self.router = router
         self.coordinatorFactory = coordinatorFactory
         self.dependenciesAssembler = dependenciesAssembler
+        self.authService = dependenciesAssembler.resolveAuthService()
     }
     
 }

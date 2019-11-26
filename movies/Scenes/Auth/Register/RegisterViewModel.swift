@@ -79,7 +79,7 @@ final class RegisterViewModel: RegisterViewModelType, RegisterViewModelOutputs {
             .asDriver(onErrorJustReturn: false)
         
         formEnteredIsValid = Observable
-            .combineLatest([usernameIsValid.asObservable(), passwordIsValid.asObservable(), confirmPasswordIsValid.asObservable()]) { $0.reduce(true, { $0 && $1 }) }
+            .combineLatest([usernameIsValid.asObservable(), passwordIsValid.asObservable(), confirmPasswordIsValid.asObservable()]) { $0.allSatisfy { $0 } }
             .asDriver(onErrorJustReturn: false)
         
         _defaultError = RegisterResult.failure(UserPrintableError(title: UIMessages.errorTitle, message: UIMessages.registerFailedMessage))
