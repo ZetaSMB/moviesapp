@@ -55,7 +55,7 @@ class RouterTest: XCTestCase {
             XCTAssertEqual(self.rootNavController.children, [self.aController])
             promise2.fulfill()
         }
-        wait(for: [promise2], timeout: 2*deltaTime)
+        wait(for: [promise2], timeout: 2 * deltaTime)
     }
 
     func testPresentAndDismiss() {
@@ -70,7 +70,7 @@ class RouterTest: XCTestCase {
             XCTAssertEqual(self.rootNavController.children, [self.aController])
             promise.fulfill()
         }
-        wait(for: [promise], timeout: 2*deltaTime)
+        wait(for: [promise], timeout: 2 * deltaTime)
     }
 
     func testPopToRoot() {
@@ -94,7 +94,7 @@ class RouterTest: XCTestCase {
             XCTAssertEqual(self.rootNavController.children, [self.aController, self.bController])
             promise2.fulfill()
         }
-        wait(for: [promise2], timeout: 2*deltaTime)
+        wait(for: [promise2], timeout: 2 * deltaTime)
         
         //pop to Root
         sut.popToRootModule(animated: true)
@@ -103,7 +103,7 @@ class RouterTest: XCTestCase {
             XCTAssertEqual(self.rootNavController.children, [self.aController])
             promise3.fulfill()
         }
-        wait(for: [promise3], timeout: 3*deltaTime)
+        wait(for: [promise3], timeout: 3 * deltaTime)
     }
     
     func testSetRoot() {
@@ -118,7 +118,7 @@ class RouterTest: XCTestCase {
             XCTAssertEqual(self.rootNavController.children, [self.bController, self.cController])
             promise.fulfill()
         }
-        wait(for: [promise], timeout: 2*deltaTime)
+        wait(for: [promise], timeout: 2 * deltaTime)
     }
     
     func testCompletion() {
@@ -128,21 +128,20 @@ class RouterTest: XCTestCase {
         let promise1 = expectation(description: "push")
         let deltaTime = 0.3
         var didExcecuteBlock = false
-        sut.push(bController, transition: StubAnimatedTransitioning(isPresentation:true), animated: true) {
+        sut.push(bController, transition: StubAnimatedTransitioning(isPresentation: true), animated: true) {
             didExcecuteBlock = true
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + deltaTime, execute: {
             self.sut.popModule()
         })
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2*deltaTime, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2 * deltaTime, execute: {
             XCTAssertEqual(self.rootNavController.children, [self.aController])
 //TODO: fix pop completion logic
 //            XCTAssertEqual(didExcecuteBlock, true)
             promise1.fulfill()
         })
         
-        
-        wait(for: [promise1], timeout: 3*deltaTime)
+        wait(for: [promise1], timeout: 3 * deltaTime)
     }
 }

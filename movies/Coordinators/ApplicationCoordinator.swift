@@ -65,7 +65,7 @@ final class ApplicationCoordinator: BaseCoordinator {
     
     // MARK: - Init
     
-    init(router: Router, coordinatorFactory: CoordinatorFactory, dependenciesAssembler: DependenciesAssembler) {
+    init(router: RouterProtocol, coordinatorFactory: CoordinatorFactory, dependenciesAssembler: DependenciesAssembler) {
         self.router = router
         self.coordinatorFactory = coordinatorFactory
         self.dependenciesAssembler = dependenciesAssembler

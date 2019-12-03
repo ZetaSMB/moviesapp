@@ -19,6 +19,12 @@
 		B8253C64237C8340007815D5 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8253C59237C8340007815D5 /* BaseCoordinator.swift */; };
 		B8253C65237C8340007815D5 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8253C5B237C8340007815D5 /* Router.swift */; };
 		B8253C67237C84AE007815D5 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8253C66237C84AE007815D5 /* AuthCoordinator.swift */; };
+		B8810E212395855D006C286E /* BaseCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8810E202395855D006C286E /* BaseCoordinatorTest.swift */; };
+		B8810E252395871B006C286E /* ApplicationCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8810E242395871B006C286E /* ApplicationCoordinatorTest.swift */; };
+		B8810E2823959000006C286E /* RouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8810E2723959000006C286E /* RouterMock.swift */; };
+		B8810E2A2395A2F9006C286E /* RouterMockTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8810E292395A2F9006C286E /* RouterMockTest.swift */; };
+		B8810E2C2395A91E006C286E /* FakeRealmAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8810E2B2395A91E006C286E /* FakeRealmAuthService.swift */; };
+		B8810E2E2395A944006C286E /* FakeDependenciesAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8810E2D2395A944006C286E /* FakeDependenciesAssembler.swift */; };
 		B8834BB6238C4D300043E047 /* HasLogoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8834BB5238C4D300043E047 /* HasLogoutController.swift */; };
 		B8872CFE2386C1B2001DB095 /* UserPrintableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8872CFB2386C1B2001DB095 /* UserPrintableError.swift */; };
 		B8872CFF2386C1B2001DB095 /* RxActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8872CFC2386C1B2001DB095 /* RxActivityIndicator.swift */; };
@@ -92,6 +98,12 @@
 		B8253C59237C8340007815D5 /* BaseCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		B8253C5B237C8340007815D5 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B8253C66237C84AE007815D5 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		B8810E202395855D006C286E /* BaseCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinatorTest.swift; sourceTree = "<group>"; };
+		B8810E242395871B006C286E /* ApplicationCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinatorTest.swift; sourceTree = "<group>"; };
+		B8810E2723959000006C286E /* RouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterMock.swift; sourceTree = "<group>"; };
+		B8810E292395A2F9006C286E /* RouterMockTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterMockTest.swift; sourceTree = "<group>"; };
+		B8810E2B2395A91E006C286E /* FakeRealmAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRealmAuthService.swift; sourceTree = "<group>"; };
+		B8810E2D2395A944006C286E /* FakeDependenciesAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDependenciesAssembler.swift; sourceTree = "<group>"; };
 		B8834BB5238C4D300043E047 /* HasLogoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasLogoutController.swift; sourceTree = "<group>"; };
 		B8872CFB2386C1B2001DB095 /* UserPrintableError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPrintableError.swift; sourceTree = "<group>"; };
 		B8872CFC2386C1B2001DB095 /* RxActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxActivityIndicator.swift; sourceTree = "<group>"; };
@@ -235,6 +247,33 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		B8810E2223958565006C286E /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B8810E202395855D006C286E /* BaseCoordinatorTest.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B8810E23239586FB006C286E /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				B8810E242395871B006C286E /* ApplicationCoordinatorTest.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		B8810E2623958FE8006C286E /* MockedShared */ = {
+			isa = PBXGroup;
+			children = (
+				B8810E2723959000006C286E /* RouterMock.swift */,
+				B8810E292395A2F9006C286E /* RouterMockTest.swift */,
+				B8810E2B2395A91E006C286E /* FakeRealmAuthService.swift */,
+				B8810E2D2395A944006C286E /* FakeDependenciesAssembler.swift */,
+			);
+			path = MockedShared;
+			sourceTree = "<group>";
+		};
 		B8834BB4238C4D0E0043E047 /* CommonMain */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +403,9 @@
 		DF3FAC18225906D1004314A1 /* moviesTests */ = {
 			isa = PBXGroup;
 			children = (
+				B8810E2623958FE8006C286E /* MockedShared */,
+				B8810E23239586FB006C286E /* Coordinators */,
+				B8810E2223958565006C286E /* Base */,
 				DEC6462B23919D8100C0B60F /* Router */,
 				DF3FAC19225906D1004314A1 /* moviesTests.swift */,
 				DF3FAC1B225906D1004314A1 /* Info.plist */,
@@ -700,9 +742,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8810E2C2395A91E006C286E /* FakeRealmAuthService.swift in Sources */,
+				B8810E2823959000006C286E /* RouterMock.swift in Sources */,
 				DE1C0BBE2391E330004A2F5F /* StubAnimatedTransitioning.swift in Sources */,
 				DEC6462D23919E7F00C0B60F /* RouterTest.swift in Sources */,
+				B8810E252395871B006C286E /* ApplicationCoordinatorTest.swift in Sources */,
+				B8810E2E2395A944006C286E /* FakeDependenciesAssembler.swift in Sources */,
 				DF3FAC1A225906D1004314A1 /* moviesTests.swift in Sources */,
+				B8810E2A2395A2F9006C286E /* RouterMockTest.swift in Sources */,
+				B8810E212395855D006C286E /* BaseCoordinatorTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

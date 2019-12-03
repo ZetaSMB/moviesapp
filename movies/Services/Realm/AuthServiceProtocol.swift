@@ -9,9 +9,18 @@
 import Foundation
 import RealmSwift
 
+public enum AuthError: Error {
+    case realmError(Error)
+    case userOrPasswordDoesNotExist
+    case creatingUserAlreadyExist
+    case unkownError
+}
+
+public typealias AuthCompletionBlock = (Result<(), Error>) -> ()
+
 protocol AuthServiceProtocol {
     func isLoggedInUser() -> Bool
-    func login(username: String, password: String, successHandler: @escaping UserCompletionBlock)
-    func registerUser(username: String, password: String, successHandler: @escaping UserCompletionBlock)
+    func login(username: String, password: String, completionHandler: @escaping AuthCompletionBlock)
+    func registerUser(username: String, password: String, completionHandler: @escaping AuthCompletionBlock)
     func logoutUser()
 }

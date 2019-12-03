@@ -112,12 +112,13 @@ final class RegisterViewModel: RegisterViewModelType, RegisterViewModelOutputs {
     private func registerUser(with username: String, pass: String) -> Observable<RegisterResult> {
         return Observable.create { observer in
             self._isFetching.accept(true)
-            self.authService.registerUser(username: username, password: pass) { (_, error) in
+            self.authService.registerUser(username: username, password: pass) { (result) in
                 self._isFetching.accept(false)
-                if error != nil {
-                    observer.onNext(.failure(UserPrintableError(title: UIMessages.errorTitle, message: UIMessages.registerFailedMessage)))
-                } else {
+                switch result {
+                    case .success(()):
                     observer.onNext(.success(()))
+                    case .failure(_): //todo: apply different messages to different errors
+                    observer.onNext(.failure(UserPrintableError(title: UIMessages.errorTitle, message: UIMessages.registerFailedMessage)))
                 }
             }
             return Disposables.create()

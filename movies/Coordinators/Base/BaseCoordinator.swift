@@ -10,7 +10,7 @@ class BaseCoordinator: Coordinator {
     
     // MARK: - Vars & Lets
     
-    var childCoordinators = [Coordinator]()
+    private(set) var childCoordinators = [Coordinator]()
     
     // MARK: - Public methods
     
