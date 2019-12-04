@@ -19,6 +19,7 @@
 		B8253C64237C8340007815D5 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8253C59237C8340007815D5 /* BaseCoordinator.swift */; };
 		B8253C65237C8340007815D5 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8253C5B237C8340007815D5 /* Router.swift */; };
 		B8253C67237C84AE007815D5 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8253C66237C84AE007815D5 /* AuthCoordinator.swift */; };
+		B863DACD2398025C00CFD203 /* LoginViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B863DACC2398025C00CFD203 /* LoginViewModelTest.swift */; };
 		B8810E212395855D006C286E /* BaseCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8810E202395855D006C286E /* BaseCoordinatorTest.swift */; };
 		B8810E252395871B006C286E /* ApplicationCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8810E242395871B006C286E /* ApplicationCoordinatorTest.swift */; };
 		B8810E2823959000006C286E /* RouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8810E2723959000006C286E /* RouterMock.swift */; };
@@ -98,6 +99,7 @@
 		B8253C59237C8340007815D5 /* BaseCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		B8253C5B237C8340007815D5 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B8253C66237C84AE007815D5 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		B863DACC2398025C00CFD203 /* LoginViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTest.swift; sourceTree = "<group>"; };
 		B8810E202395855D006C286E /* BaseCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinatorTest.swift; sourceTree = "<group>"; };
 		B8810E242395871B006C286E /* ApplicationCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinatorTest.swift; sourceTree = "<group>"; };
 		B8810E2723959000006C286E /* RouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterMock.swift; sourceTree = "<group>"; };
@@ -245,6 +247,14 @@
 				B8253C5B237C8340007815D5 /* Router.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		B863DACB2398024500CFD203 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B863DACC2398025C00CFD203 /* LoginViewModelTest.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		B8810E2223958565006C286E /* Base */ = {
@@ -403,6 +413,7 @@
 		DF3FAC18225906D1004314A1 /* moviesTests */ = {
 			isa = PBXGroup;
 			children = (
+				B863DACB2398024500CFD203 /* ViewModels */,
 				B8810E2623958FE8006C286E /* MockedShared */,
 				B8810E23239586FB006C286E /* Coordinators */,
 				B8810E2223958565006C286E /* Base */,
@@ -750,6 +761,7 @@
 				B8810E2E2395A944006C286E /* FakeDependenciesAssembler.swift in Sources */,
 				DF3FAC1A225906D1004314A1 /* moviesTests.swift in Sources */,
 				B8810E2A2395A2F9006C286E /* RouterMockTest.swift in Sources */,
+				B863DACD2398025C00CFD203 /* LoginViewModelTest.swift in Sources */,
 				B8810E212395855D006C286E /* BaseCoordinatorTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

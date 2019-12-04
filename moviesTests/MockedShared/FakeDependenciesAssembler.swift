@@ -9,7 +9,7 @@
 import Foundation
 @testable import movies
 
-final class FakeDependenciesAssembler : DependenciesAssembler {
+final class FakeDependenciesAssembler: DependenciesAssembler {
     
     let restAPIrepo: TMDbRepository!
     let authService: AuthServiceProtocol!
@@ -21,7 +21,6 @@ final class FakeDependenciesAssembler : DependenciesAssembler {
     func resolveAuthService() -> AuthServiceProtocol {
         return authService
     }
-    
     
     required init(repository: TMDbRepository, _ authService: AuthServiceProtocol ) {
         restAPIrepo = repository

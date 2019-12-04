@@ -115,9 +115,9 @@ final class RegisterViewModel: RegisterViewModelType, RegisterViewModelOutputs {
             self.authService.registerUser(username: username, password: pass) { (result) in
                 self._isFetching.accept(false)
                 switch result {
-                    case .success(()):
+                    case .success:
                     observer.onNext(.success(()))
-                    case .failure(_): //todo: apply different messages to different errors
+                    case .failure: //todo: apply different messages to different errors
                     observer.onNext(.failure(UserPrintableError(title: UIMessages.errorTitle, message: UIMessages.registerFailedMessage)))
                 }
             }

@@ -15,7 +15,7 @@ final class FakeRealmAuthService: AuthServiceProtocol {
     var usersMap: [String: String]
     var loggedUserName: String?
         
-    init(usersNamesPassDict dict:[String: String]) {
+    init(usersNamesPassDict dict: [String: String] = [:]) {
         usersMap = dict
     }
     
@@ -34,10 +34,10 @@ final class FakeRealmAuthService: AuthServiceProtocol {
     
     func registerUser(username: String, password: String, completionHandler: @escaping AuthCompletionBlock) {
         if let keyForUser = usersMap[username], keyForUser == password {
-            loggedUserName = username
-            completionHandler(.success(()))
-        } else {
             completionHandler(.failure(AuthError.creatingUserAlreadyExist))
+        } else {
+            usersMap[username] = password
+            completionHandler(.success(()))
         }
     }
     

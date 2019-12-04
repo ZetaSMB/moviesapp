@@ -29,7 +29,7 @@ final class ApplicationCoordinator: BaseCoordinator {
     
     override func start(with option: DeepLinkOption?) {
         if option != nil {
-            
+            //TODO:
         } else {
             switch launchInstructor {
             case .auth:

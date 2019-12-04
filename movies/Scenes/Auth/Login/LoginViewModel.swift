@@ -56,9 +56,9 @@ final class LoginViewModel: LoginViewModelType, LoginViewModelOutputs {
                 authService.login(username: user, password: pass) { (result) in
                     self._isFetching.accept(false)
                     switch result {
-                        case .success(()):
+                        case .success:
                         self._loginResult.accept(.success(()))
-                        case .failure(_): //todo: apply different messages to different errors
+                        case .failure: //todo: apply different messages to different errors
                         self._loginResult.accept(.failure(UserPrintableError(title: UIMessages.loginFailedTitle, message: UIMessages.loginFailedMessage)))
                     }
                 }

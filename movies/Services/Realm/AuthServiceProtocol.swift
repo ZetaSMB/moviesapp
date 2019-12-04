@@ -16,7 +16,7 @@ public enum AuthError: Error {
     case unkownError
 }
 
-public typealias AuthCompletionBlock = (Result<(), Error>) -> ()
+public typealias AuthCompletionBlock = (Result<(), Error>) -> Void
 
 protocol AuthServiceProtocol {
     func isLoggedInUser() -> Bool
