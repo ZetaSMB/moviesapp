@@ -9,8 +9,15 @@ target 'movies' do
   pod 'AlamofireImage'
   pod 'RxSwift'
   pod 'RxCocoa'  
-  pod 'RxTest'
-  pod 'RxBlocking'
   pod 'RealmSwift'
   pod 'PKHUD'
+  
+  target 'moviesTests' do
+    pod 'Alamofire'
+    pod 'OHHTTPStubs/Swift'
+    pod 'RxSwift'
+    pod 'RxCocoa'
+    pod 'RxTest'
+    pod 'RxBlocking'
+  end
 end

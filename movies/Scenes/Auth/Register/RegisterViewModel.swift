@@ -95,9 +95,9 @@ final class RegisterViewModel: RegisterViewModelType, RegisterViewModelOutputs {
     
     var registerResult: Driver<RegisterResult> {
         if _registerResult == nil {
-            _registerResult = Observable
-                .combineLatest(_inputs.username.asObservable(), _inputs.password.asObservable(), _inputs.registerTrigger.asObservable())
-                .map({ (user, pass, _) in (user, pass) })
+            let latestUserPass: Observable<(String,String)> = Observable.combineLatest(_inputs.username.asObservable(), _inputs.password.asObservable())
+            _registerResult = _inputs.registerTrigger.asObservable()
+                .withLatestFrom(latestUserPass)
                 .flatMap { (arg) -> Observable<RegisterResult> in
                     let (user, pass) = arg
                     return self.registerUser(with: user, pass: pass).asObservable()

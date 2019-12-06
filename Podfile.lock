@@ -2,6 +2,19 @@ PODS:
   - Alamofire (4.8.1)
   - AlamofireImage (3.5.0):
     - Alamofire (~> 4.8)
+  - OHHTTPStubs/Core (8.0.0)
+  - OHHTTPStubs/Default (8.0.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (8.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (8.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (8.0.0)
+  - OHHTTPStubs/Swift (8.0.0):
+    - OHHTTPStubs/Default
   - PKHUD (5.3.0)
   - Realm (4.1.0):
     - Realm/Headers (= 4.1.0)
@@ -23,6 +36,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
+  - OHHTTPStubs/Swift
   - PKHUD
   - RealmSwift
   - RxBlocking
@@ -34,6 +48,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
+    - OHHTTPStubs
     - PKHUD
     - Realm
     - RealmSwift
@@ -46,6 +61,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
+  OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   Realm: 5d1453468eca02c901c50b8a356f4a98a15b57aa
   RealmSwift: 1d238caa5c64a590c669beef1a7e858a6cf55a1c
@@ -55,6 +71,6 @@ SPEC CHECKSUMS:
   RxSwift: 92fcf68dfef21f3e2ab1965363d9e7b3d787597e
   RxTest: f8e548755ca3c7502dc41c7d3b28802c90115a38
 
-PODFILE CHECKSUM: dd367aabcf4fe37d96ab7e998f3d6db8a5baa57d
+PODFILE CHECKSUM: 0e4d26b36c7539e5397139522d3896f5dff0be90
 
 COCOAPODS: 1.8.4

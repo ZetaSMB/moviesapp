@@ -21,10 +21,13 @@ final class RealmAuthService: AuthServiceProtocol {
             if RLMSyncUser != nil {
                 completionHandler(.success(()))
             }
-            if let err = Error as NSError? {
+            else if let err = Error as NSError? {
                 completionHandler(.failure(err.code == 611 ? AuthError.userOrPasswordDoesNotExist : AuthError.realmError(err)))
             }
-            completionHandler(.failure(AuthError.unkownError))
+            else {
+                completionHandler(.failure(AuthError.unkownError))
+            }
+            
         }
     }
     
@@ -34,10 +37,12 @@ final class RealmAuthService: AuthServiceProtocol {
               if let _ = RLMSyncUser {
                   completionHandler(.success(()))
               }
-              if let err = Error {
+              else if let err = Error {
                   completionHandler(.failure(AuthError.realmError(err)))
               }
-              completionHandler(.failure(AuthError.unkownError))
+              else {
+                completionHandler(.failure(AuthError.unkownError))
+                }
           }
     }
     

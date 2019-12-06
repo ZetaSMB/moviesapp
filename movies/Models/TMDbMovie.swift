@@ -8,14 +8,14 @@
 
 import Foundation
 
-public struct MoviesResponse: Codable {
+public struct MoviesResponse: Codable, Equatable {
     let page: Int
     let totalResults: Int
     let totalPages: Int
     let results: [Movie]
 }
 
-public struct Movie: Codable {
+public struct Movie: Codable, Equatable {
     public let id: Int
     public let title: String
     public let backdropPath: String?
@@ -24,7 +24,7 @@ public struct Movie: Codable {
     public let adult: Bool
 }
 
-public struct MovieDetail: Codable {
+public struct MovieDetail: Codable, Equatable {
     public let id: Int
     public let title: String
     public let backdropPath: String?
@@ -41,15 +41,15 @@ public struct MovieDetail: Codable {
     public let runtime: Int?
 }
 
-public struct MovieGenre: Codable {
+public struct MovieGenre: Codable, Equatable {
     let name: String
 }
 
-public struct MovieVideoResponse: Codable {
+public struct MovieVideoResponse: Codable, Equatable {
     public let results: [MovieVideo]
 }
 
-public struct MovieVideo: Codable {
+public struct MovieVideo: Codable, Equatable {
     public let id: String
     public let key: String
     public let name: String
@@ -65,18 +65,18 @@ public struct MovieVideo: Codable {
     }
 }
 
-public struct MovieCreditResponse: Codable {
+public struct MovieCreditResponse: Codable, Equatable {
     public let cast: [MovieCast]
     public let crew: [MovieCrew]
 }
 
-public struct MovieCast: Codable {
+public struct MovieCast: Codable, Equatable {
     public let profilePath: String?
     public let character: String
     public let name: String
 }
 
-public struct MovieCrew: Codable {
+public struct MovieCrew: Codable, Equatable {
     public let department: String
     public let job: String
     public let name: String
