@@ -23,7 +23,6 @@ class RouterMockTest: XCTestCase {
     private var secondController: MockSecondViewController!
     private var thirdController: MockThirdViewController!
     
-    
     override func setUp() {
         super.setUp()
         router = RouterMockImp()

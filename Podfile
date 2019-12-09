@@ -8,18 +8,16 @@ target 'movies' do
   pod 'Alamofire'
   pod 'AlamofireImage'
   pod 'RxSwift'
-  pod 'RxCocoa'  
-#  pod 'RxTest'
-#  pod 'RxBlocking'
+  pod 'RxCocoa'
   pod 'RealmSwift'
   pod 'PKHUD'
-end
-
-
-target 'moviesTests' do
-  use_frameworks!
-  pod 'RxSwift'
-  pod 'RxCocoa'
-  pod 'RxTest'
-  pod 'RxBlocking'
+  
+  target 'moviesTests' do
+    pod 'Alamofire'
+    pod 'OHHTTPStubs/Swift'
+    pod 'RxSwift'
+    pod 'RxCocoa'
+    pod 'RxTest'
+    pod 'RxBlocking'
+  end
 end

@@ -20,24 +20,25 @@ final class RealmAuthService: AuthServiceProtocol {
         SyncUser.logIn(with: creds, server: RealmConstants.AUTH_URL) { (RLMSyncUser, Error) in
             if RLMSyncUser != nil {
                 completionHandler(.success(()))
-            }
-            if let err = Error as NSError? {
+            } else if let err = Error as NSError? {
                 completionHandler(.failure(err.code == 611 ? AuthError.userOrPasswordDoesNotExist : AuthError.realmError(err)))
+            } else {
+                completionHandler(.failure(AuthError.unkownError))
             }
-            completionHandler(.failure(AuthError.unkownError))
+            
         }
     }
     
     func registerUser(username: String, password: String, completionHandler: @escaping AuthCompletionBlock) {
         let creds = SyncCredentials.usernamePassword(username: username, password: password, register: true)
-        SyncUser.logIn(with: creds, server: RealmConstants.AUTH_URL)  { (RLMSyncUser, Error) in
+        SyncUser.logIn(with: creds, server: RealmConstants.AUTH_URL) { (RLMSyncUser, Error) in
               if let _ = RLMSyncUser {
                   completionHandler(.success(()))
-              }
-              if let err = Error {
+              } else if let err = Error {
                   completionHandler(.failure(AuthError.realmError(err)))
-              }
-              completionHandler(.failure(AuthError.unkownError))
+              } else {
+                completionHandler(.failure(AuthError.unkownError))
+                }
           }
     }
     

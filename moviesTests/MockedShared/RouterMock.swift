@@ -84,7 +84,6 @@ final class RouterMockImp: RouterMock {
         push(module, animated: animated, completion: completion)
     }
     
-    
     func popModule() {
         popModule(animated: false)
     }
@@ -93,7 +92,6 @@ final class RouterMockImp: RouterMock {
         let controller = navigationStack.removeLast()
         runCompletion(for: controller)
     }
-    
     
     func popModule(transition: UIViewControllerAnimatedTransitioning?) {
         popModule(animated: false)

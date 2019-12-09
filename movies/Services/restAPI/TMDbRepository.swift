@@ -26,9 +26,11 @@ class TMDbRepository: TMDbService {
         Alamofire.request(request)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
-//            .responseString(completionHandler: { (rsp) in
-//                print(rsp)
-//            })
+//        #if DEBUG
+            .responseString(completionHandler: { (rsp) in
+                print(rsp)
+            })
+//        #endif
             .responseData { response in
                 switch response.result {
                 case .success(let data):
