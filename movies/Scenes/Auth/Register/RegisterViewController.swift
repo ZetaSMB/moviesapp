@@ -65,6 +65,7 @@ class RegisterViewController: UIViewController, RegisterViewControllerProtocol {
                     self.userTxtField.layer.borderColor = valid ? UIColors.clearBorderColor : UIColors.redBorderColor
                 })
                 .disposed(by: disposeBag)
+            
             vm.outputs
                .formEnteredIsValid
                .asObservable()

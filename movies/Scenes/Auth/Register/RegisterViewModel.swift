@@ -74,7 +74,7 @@ final class RegisterViewModel: RegisterViewModelType, RegisterViewModelOutputs {
             .map { $0.0 == $0.1 }
             .asObservable()
         
-        confirmPasswordIsValid = Observable.combineLatest(lengthConfirmPassword, passwordMatch)
+        confirmPasswordIsValid = Observable.zip(lengthConfirmPassword, passwordMatch) //OBS: zip instead of combine latest used (combine makes produce 2 signals on every change instead of 1)
             .map({ $0 && $1 })
             .asDriver(onErrorJustReturn: false)
         

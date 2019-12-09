@@ -8,7 +8,7 @@ PODS:
   - Realm/Headers (4.1.0)
   - RealmSwift (4.1.0):
     - Realm (= 4.1.0)
-  - RxAtomic (4.4.1)
+  - RxAtomic (4.4.2)
   - RxBlocking (4.4.1):
     - RxAtomic (~> 4.4)
     - RxSwift (~> 4.0)
@@ -49,12 +49,12 @@ SPEC CHECKSUMS:
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   Realm: 5d1453468eca02c901c50b8a356f4a98a15b57aa
   RealmSwift: 1d238caa5c64a590c669beef1a7e858a6cf55a1c
-  RxAtomic: f8d6adc1ccb87a767811269e4875887bc74dbf19
+  RxAtomic: d00e97c10db88c6f08540e0bf2752fc5a2404167
   RxBlocking: 5508e90d36ca2304632dc9378ece4e9b5d4bf656
   RxCocoa: 2f35a76bf8887872e28a1914112395b11b8e0e64
   RxSwift: 92fcf68dfef21f3e2ab1965363d9e7b3d787597e
   RxTest: f8e548755ca3c7502dc41c7d3b28802c90115a38
 
-PODFILE CHECKSUM: dd367aabcf4fe37d96ab7e998f3d6db8a5baa57d
+PODFILE CHECKSUM: 22c00666d285e56619ed9ab0edfd1b0ebfc0e2e4
 
 COCOAPODS: 1.8.4

@@ -9,8 +9,17 @@ target 'movies' do
   pod 'AlamofireImage'
   pod 'RxSwift'
   pod 'RxCocoa'  
-  pod 'RxTest'
-  pod 'RxBlocking'
+#  pod 'RxTest'
+#  pod 'RxBlocking'
   pod 'RealmSwift'
   pod 'PKHUD'
+end
+
+
+target 'moviesTests' do
+  use_frameworks!
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'RxTest'
+  pod 'RxBlocking'
 end
